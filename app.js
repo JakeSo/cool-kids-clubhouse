@@ -20,6 +20,11 @@ app.use(methodOveride('_method'));
 
 //Set up app routes
 //NEED TO SETUP THE ROUTES
+app.get('/', (req, res)=>{
+    res.render('index');
+});
+
+
 app.use('/', clientRoutes);
 
 app.use('/admin', adminRoutes);

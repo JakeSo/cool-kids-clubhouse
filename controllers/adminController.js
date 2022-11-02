@@ -2,3 +2,8 @@
 exports.index = (req, res)=>{
     res.render('./events/index');
 };
+
+exports.new = (req, res)=>{
+    res.render('./events/new');
+}
+
