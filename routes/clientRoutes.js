@@ -4,6 +4,6 @@ const controller = require('../controllers/clientController');
 
 const router = express.Router();
 
-router.get('/', controller.index);
+router.get('/client', controller.index);
 
 module.exports = router;
