@@ -1,8 +1,13 @@
 //This is where the call back functions for the admin side of the website will go
 const model = require('../models/event');
 
+
 exports.index = (req, res)=>{
     res.render('./admin/index');
+};
+
+exports.home = (req, res)=>{
+    res.render('./admin/home');
 };
 
 exports.new = (req, res)=>{
@@ -12,7 +17,7 @@ exports.new = (req, res)=>{
 exports.create = (req, res)=>{
     let event = req.body;
     model.save(event);
-    res.redirect('./admin/index');
+    res.redirect('/home');
 };
 
 exports.show = (req, res)=>{
@@ -22,6 +27,36 @@ exports.show = (req, res)=>{
         res.render('./admin/show', {event});
     } else{
         res.status(404).send('Event with id ' + id + ' does not exist.');
+    }
+};
+
+exports.edit = (req, res)=>{
+    let id = req.params.id;
+    let event = model.findById(id);
+    if(event){
+        res.render('./admin/edit', {event});
+    } else{
+        res.status(404).send('Event with id ' + id + ' does not exist.')
+    }
+};
+
+exports.update = (req, res)=>{
+    let event = req.body;
+    let id = req.params.id;
+
+    if(model.updateById(id, event)){
+        res.redirect('/home');
+    } else{
+        res.status(404).send('Event with id ' + id + ' does not exist.')
+    }
+};
+
+exports.delete = (req, res)=>{
+    let id = req.params.id;
+    if(model.deleteById(id)){
+        res.redirect('/home');
+    } else{
+        res.status(404).send('Event with id ' + id + ' does not exist.')
     }
 };
 

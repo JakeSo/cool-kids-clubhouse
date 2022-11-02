@@ -25,7 +25,7 @@ app.get('/', (req, res)=>{
 });
 
 
-app.use('/', clientRoutes);
+app.use('/client', clientRoutes);
 
 app.use('/admin', adminRoutes);
 
