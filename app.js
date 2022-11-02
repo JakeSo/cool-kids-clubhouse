@@ -20,22 +20,9 @@ app.use(methodOveride('_method'));
 
 //Set up app routes
 //NEED TO SETUP THE ROUTES
+app.use('/', clientRoutes);
 
-app.use((req, res, next)=> {
-    let err = new Error("The server cannot locate " + req.url);
-    err.status = 404;
-    next(err);
-});
-
-app.use((err, req, res, next)=> {
-    console.log(err.stack);
-    if(!err.status) {
-        err.status = 500;
-        err.message = ("Internal Server Error")
-    }
-    res.status(err.status);
-    res.render('error', {error: err});
-});
+app.use('/admin', adminRoutes);
 
 //start the server
 app.listen(port, host, ()=>{
