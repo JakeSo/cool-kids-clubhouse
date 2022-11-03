@@ -105,7 +105,16 @@ footer {
     bottom: 100px;
 }
 
-/*Label what page this css is used for*/
+/*This is for the calendar page*/
+.calendar-size {
+    margin-left: auto;
+    margin-right: auto;
+    height: 65%;
+    width: 90%;
+}
+/* .dhx_cal_container {
+    margin: 200px;
+} */
 
 /*Label what page this css is used for*/
 

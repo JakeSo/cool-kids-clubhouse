@@ -2,3 +2,7 @@
 exports.index = (req, res)=>{
     res.render('./client/index');
 };
+
+exports.calendar = (req, res) => {
+    res.render('./client/calendar')
+}
