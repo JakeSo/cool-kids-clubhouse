@@ -8,6 +8,8 @@ router.get('/', controller.index);
 
 router.get('/calendar', controller.calendar);
 
+router.get('/rsvp', controller.rsvp);
+
 //homepage page  /client/home
 router.get('/home', controller.home);
 

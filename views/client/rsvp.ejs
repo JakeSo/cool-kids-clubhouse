@@ -1,5 +1,20 @@
 <%- include('../partials/header.ejs') %>
 <main>
+<div class="rsvp-content">
+    <div class="rsvp event-details">
+        <h1 id="eventTitle" style="font-size: 4rem;"><%=event.title%></h1>
+        <h3 class="eventDetail" style="font-size: 1rem;"><%= event.location%> | <%= event.date%></h3>
+    </div>
+    <div class="rsvp form">
+        <form id="client-login" name="client-login" action="/client/home" >
+            <div class="div">
+              <label for="email" class="label">Email:</label>
+              <input class="text" type="email" name="email" placeholder="Enter your email:">
+              <input type="button" value="RSVP" style="vertical-align: middle;">
+            </div>
+          </form>
 
+    </div>
+</div>
 </main>
 <%- include('../partials/footer.ejs') %>

@@ -10,6 +10,11 @@ exports.calendar = (req, res) => {
     res.render('./client/calendar');
 }
 
+exports.rsvp = (event, res) => {
+    event = model.findById("1");
+    res.render('./client/rsvp', {event});
+}
+
 exports.home = (req, res)=>{
     let events = model.find();
     res.render('./client/home', {events});
