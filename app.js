@@ -5,7 +5,6 @@ var bodyParser = require("body-parser");
 const methodOveride = require('method-override')
 const adminRoutes = require('./routes/adminRoutes');
 const clientRoutes = require('./routes/clientRoutes');
-
 //Connect to the mongoDB
 var db = require('mongoskin').db("mongodb://localhost:27017/coolkidsclub", { w: 0});
     db.bind('events');
