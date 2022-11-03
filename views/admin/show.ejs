@@ -12,7 +12,10 @@
     </div>
 
     <br>
-    <button id="rsvpBtn" formaction="/client/rsvp">Want to attend? RSVP!</button>
+    <form>
+        <button id="rsvpBtn" formaction="/client/rsvp">Want to attend? RSVP!</button>
+    </form>
+    
     <br><br>
     <form>
         <button id="eventUpdBtn" type = "submit" formmethod = "GET" formaction = "/admin/<%= event.id%>/edit">Update Event</button>

@@ -12,12 +12,11 @@
     </div>
 
     <br>
-    <button id="rsvpBtn" formaction="/client/rsvp">Want to attend? RSVP!</button>
-    <br><br>
     <form>
-        <button id="eventUpdBtn" type = "submit" formmethod = "GET" formaction = "/client/<%= event.id%>/edit">Update Event</button>
-        <button id="eventDltBtn" type = "submit" formmethod = "POST" formaction = "/client/<%= event.id%>?_method=DELETE">Delete Event</button>
+        <button id="rsvpBtn" formaction="/client/rsvp">Want to attend? RSVP!</button>
     </form>
+    <br><br>
+    
     
 </main>
 <%- include('../partials/footer.ejs') %>
