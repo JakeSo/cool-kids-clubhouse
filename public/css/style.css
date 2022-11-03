@@ -63,6 +63,47 @@ footer {
     margin-left: 10%;
     font-size: 18px;
 }
+/*For the buttons*/
+#adminBut
+{
+    background-color: rgb(135, 206, 250);
+    font-size: 18px;
+    border: none;
+    position: absolute;
+    left: 50px;
+    bottom: 50px;
+    padding: 15px;
+}
+#clientBut
+{
+    background-color: rgb(135, 206, 250);
+    font-size: 18px;
+    border: none;
+    position: absolute;
+    bottom: 50px;
+    left: 300px;
+    padding: 15px;
+}
+/*formatting in the welcome page */
+#txt1
+{
+    font-size: 35px;
+    text-align: center;
+}
+#txt2
+{
+    font-size: 20px;
+    position: absolute;
+    left: 50px;
+    bottom: 100px;
+}
+#txt3
+{
+    font-size: 20px;
+    position: absolute;
+    left: 300px;
+    bottom: 100px;
+}
 
 /*Label what page this css is used for*/
 
