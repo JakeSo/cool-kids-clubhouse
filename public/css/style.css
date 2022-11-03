@@ -41,7 +41,7 @@ footer {
     color: white;
     position: absolute;
     bottom: 0;
-    width: 99%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -130,6 +130,17 @@ input[type=text], input[type=password] {
 input[type=text]:focus, input[type=password]:focus {
     background-color: #ddd;
     outline: none;
+}
+.admin-login, .client-login{
+    margin-left: 10%;
+}
+#loginButton{
+    background-color: rgb(135, 206, 250);
+    font-size: 18px;
+    border: none;
+    margin-left: 100px;
+    padding: 10px;
+    
 }
 
 .div {
