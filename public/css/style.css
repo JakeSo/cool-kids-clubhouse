@@ -142,9 +142,118 @@ input[type=text], input[type=password] {
     width: 100px;
   }
 
-/*Label what page this css is used for*/
 
-/*Label what page this css is used for*/
+/*For event display page*/
+#eventTitle{
+    font-family: Verdana;
+    color:rgb(98, 25, 128);
+    margin-left: 8%;
+    margin-top: 2%;
+    border-bottom: rgb(98, 25, 128), 1px;
+    display: block;
+    text-align: left;
+}
+
+.eventDetail{
+    font-family: Helvetica;
+    color:rgb(98, 25, 128);
+    font-size: smaller;
+    display: block;
+    width: 50%;
+    background-color: #f1f1f1;
+    margin-left: 8%;
+    padding: 5px;
+}
+
+.eventDesc{
+    font-family: Verdana;
+    color:rgb(98, 25, 128);
+    display: block;
+    width: 50%;
+    background-color: #f1f1f1;
+    margin-left: 8%;
+    padding: 5px;
+    font-size: 11pt;
+}
+
+#rsvpBtn{
+    background-color: rgb(98, 25, 128);
+    color: white;
+    height: 50px;
+    width: 150px;
+    margin-left: 12%;
+    border: none;
+}
+#rsvpBtn:hover{
+    background-color: rgb(126, 223, 175);
+}
+
+#eventUpdBtn{
+    background-color: rgb(128, 25, 111);
+    color: white;
+    height: 30px;
+    width: 150px;
+    margin-left: 12%;
+    border: none;
+}
+#eventDltBtn{
+    background-color: rgb(128, 25, 111);
+    color: white;
+    height: 30px;
+    width: 150px;
+    margin-left: 12%;
+    border: none;
+}
+#eventUpdBtn:hover{
+    background-color: rgb(170, 49, 150);
+}
+#eventDltBtn:hover{
+    background-color: rgb(170, 49, 150);
+}
+
+/*Event homepage styling*/
+#eventHome{
+    margin-left: 8%;
+    font-family: Helvetica;
+    color: rgb(98, 25, 128);
+}
+
+.eventListing{
+    margin-left: 8%;
+    width: 60%;
+    border-color:rgb(98, 25, 128);
+    border: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+}
+#eventLink{
+    text-decoration: none;
+}
+.eventListing:hover{
+    background-color: rgb(126, 223, 175);
+}
+.eventListing h4{
+    margin-left: 5%;
+    font-family: Helvetica;
+    color: rgb(98, 25, 128);
+}
+.eventListing p{
+    margin-left: 5%;
+    font-family: Verdana;
+    color:rgb(98, 25, 128);
+}
+
+#newEventBtn{
+    margin-left: 8%;
+    padding: 5px;
+    background-color: rgb(98, 25, 128);
+    color: white;
+    border: none;
+}
+#newEventBtn:hover{
+    background-color: rgb(126, 223, 175);
+}
 
 /*Label what page this css is used for*/
 

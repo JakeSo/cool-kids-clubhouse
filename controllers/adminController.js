@@ -7,7 +7,8 @@ exports.index = (req, res)=>{
 };
 
 exports.home = (req, res)=>{
-    res.render('./admin/home');
+    let events = model.find();
+    res.render('./admin/home', {events});
 };
 
 exports.new = (req, res)=>{
@@ -17,7 +18,7 @@ exports.new = (req, res)=>{
 exports.create = (req, res)=>{
     let event = req.body;
     model.save(event);
-    res.redirect('/home');
+    res.redirect('/admin/home');
 };
 
 exports.show = (req, res)=>{
@@ -45,7 +46,7 @@ exports.update = (req, res)=>{
     let id = req.params.id;
 
     if(model.updateById(id, event)){
-        res.redirect('/home');
+        res.redirect('/admin/home');
     } else{
         res.status(404).send('Event with id ' + id + ' does not exist.')
     }
@@ -54,7 +55,7 @@ exports.update = (req, res)=>{
 exports.delete = (req, res)=>{
     let id = req.params.id;
     if(model.deleteById(id)){
-        res.redirect('/home');
+        res.redirect('/admin/home');
     } else{
         res.status(404).send('Event with id ' + id + ' does not exist.')
     }
