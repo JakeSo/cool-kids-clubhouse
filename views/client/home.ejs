@@ -1,27 +1,15 @@
 <%- include('../partials/header.ejs') %>
 <main>
-    <h2>November</h2>
-    <div class="eventListing">
-        <h4>[Event Title]</h4>
-        <p>Location | Date</p>
-    </div>
-    <div class="eventListing">
-        <h4>[Event Title]</h4>
-        <p>Location | Date</p>
-    </div>
-    <div class="eventListing">
-        <h4>[Event Title]</h4>
-        <p>Location | Date</p>
-    </div>
-    <h2>December</h2>
-    <div class="eventListing">
-        <h4>[Event Title]</h4>
-        <p>Location | Date</p>
-    </div>
-    <div class="eventListing">
-        <h4>[Event Title]</h4>
-        <p>Location | Date</p>
-    </div>
-
+    <h2 class="month-title">November</h2>
+    <% if(events.length) {%>
+        <% events.forEach(event=>{ %>
+            <div class="event-listing">
+                <h4 class="event-title"><%= event.title  %></h4>
+                <p><%= event.location%> | <%= event.date%></p>
+            </div>
+        <% });
+    } else { %>
+        <p>There are no events to display</p>
+    <% } %>
 </main>
 <%- include('../partials/footer.ejs') %>
