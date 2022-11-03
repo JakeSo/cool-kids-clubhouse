@@ -1,6 +1,23 @@
 <!--After selecting admin on main page, user is brought here-->
 <%- include('../partials/header.ejs') %>
 <main>
+    <h1>Welcome back Admin!</h1>
+    <h2>Enter your information to get started</h2>
+    
+    <form id="admin-login" name="admin-login" action="#" >
+      <div class="div">
+        <label for="username" class="label">Username:</label>
+        <input class="text" type="text" id="username" name="username" placeholder="Enter username"><br>
+      </div>
+      <div class="div">
+      <label for="password" class="label">Password:</label>
+      <input class="password" type="password" id="password" name="password" placeholder="Enter password"><br>
+      </div>
+    
+
+    </form>
+    <a href= '/admin/home'><button id = "loginButton">Login</button></a>
+    
 
 </main>
 <%- include('../partials/footer.ejs') %>

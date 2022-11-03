@@ -8,4 +8,7 @@ router.get('/', controller.index);
 
 router.get('/calendar', controller.calendar);
 
+//homepage page  /client/home
+router.get('/home', controller.home);
+
 module.exports = router;
