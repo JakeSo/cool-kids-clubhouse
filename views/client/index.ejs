@@ -3,7 +3,7 @@
     <h1>Welcome back Cool Kid!</h1>
 <h2>Enter your information to get started</h2>
 <!--add the form-->
-<form id="client-login" name="client-login" action="#" >
+<form id="client-login" name="client-login" action="/client/home" >
   <div class="div">
     <label for="username" class="label">Username:</label>
     <input class="text" type="text" id="username" name="username" placeholder="Enter username"><br>
@@ -13,8 +13,9 @@
   <input class="password" type="password" id="password" name="password" placeholder="Enter password"><br>
   </div>
 
-  <a href= '/client/home'><button id = "loginButton">Login</button></a>
 </form>
+
+<a href= '/client/home'><button id = "loginButton">Login</button></a>
 
 </main>
 <%- include('../partials/footer.ejs') %>
