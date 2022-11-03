@@ -132,7 +132,7 @@ input[type=text]:focus, input[type=password]:focus {
     outline: none;
 }
 .admin-login, .client-login{
-    padding-left: 25%;
+    padding-left: 10%;
 }
 
 .div {
