@@ -138,7 +138,7 @@ input[type=text]:focus, input[type=password]:focus {
     background-color: rgb(135, 206, 250);
     font-size: 18px;
     border: none;
-
+    padding-left: 50px;
 }
 
 .div {
