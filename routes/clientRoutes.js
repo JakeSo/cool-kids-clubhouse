@@ -4,6 +4,8 @@ const controller = require('../controllers/clientController');
 
 const router = express.Router();
 
-router.get('/client', controller.index);
+router.get('/', controller.index);
+
+router.get('/calendar', controller.calendar);
 
 module.exports = router;
