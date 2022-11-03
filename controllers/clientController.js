@@ -14,3 +14,13 @@ exports.home = (req, res)=>{
     let events = model.find();
     res.render('./client/home', {events});
 };
+
+exports.show = (req, res)=>{
+    let id = req.params.id;
+    let event = model.findById(id);
+    if(event){
+        res.render('./client/show', {event});
+    } else{
+        res.status(404).send('Event with id ' + id + ' does not exist.');
+    }
+};

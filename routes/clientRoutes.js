@@ -6,9 +6,11 @@ const router = express.Router();
 
 router.get('/', controller.index);
 
-router.get('/calendar', controller.calendar);
-
 //homepage page  /client/home
 router.get('/home', controller.home);
+
+router.get('/calendar', controller.calendar);
+
+router.get('/:id', controller.show);
 
 module.exports = router;
