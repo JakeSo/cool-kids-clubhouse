@@ -8,12 +8,17 @@ exports.index = (req, res)=>{
 
 exports.calendar = (req, res) => {
     res.render('./client/calendar');
-}
+};
 
-exports.rsvp = (event, res) => {
-    event = model.findById("1");
-    res.render('./client/rsvp', {event});
-}
+exports.rsvp = (req, res) => {
+    let id = req.params.id;
+    let event = model.findById(id);
+    if(event){
+        res.render('./client/rsvp', {event});
+    } else{
+        res.status(404).send('Event with id ' + id + ' does not exist.')
+    }
+};
 
 exports.home = (req, res)=>{
     let events = model.find();

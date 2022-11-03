@@ -13,4 +13,6 @@ router.get('/calendar', controller.calendar);
 
 router.get('/:id', controller.show);
 
+router.get('/:id/rsvp', controller.rsvp);
+
 module.exports = router;
