@@ -4,27 +4,27 @@ const { v4: uuidv4 } = require('uuid');
 const events = [
     {
         id: '1',
-        title: 'TEST EVENT',
-        details: 'Information about the event goes here',
-        date: '',
-        location: 'Somewhere',
-        host: 'Person Person'
+        title: 'Pizza Night',
+        details: 'Come enjoy pizza with plenty of other cool kids!',
+        date: '11/4/2022',
+        location: 'UNCC Woodward Hall',
+        host: 'Bob'
     },
     {
         id: '2',
-        title: 'TEST EVENT 2',
-        details: '',
-        date: '',
-        location: '',
-        host: ''
+        title: 'Movie Night',
+        details: 'If you love movies just as much as me come join the cool kids for a movie night!',
+        date: '11/5/2022',
+        location: 'UNCC Student Union',
+        host: 'John'
     },
     {
         id: '3',
-        title: 'TEST EVENT 3',
-        details: '',
-        date: '',
-        location: '',
-        host: ''
+        title: "The Coolest Ninjas",
+        details: 'Come be a ninja with us cool kids at Ninja Nation!',
+        date: '11/6/2022',
+        location: 'Ninja Nation',
+        host: 'Mary'
     }
 ];
 
