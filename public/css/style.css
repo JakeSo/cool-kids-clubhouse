@@ -134,6 +134,12 @@ input[type=text]:focus, input[type=password]:focus {
 .admin-login, .client-login{
     padding-left: 10%;
 }
+#loginButton{
+    background-color: rgb(135, 206, 250);
+    font-size: 18px;
+    border: none;
+
+}
 
 .div {
     margin-bottom: 10px;
