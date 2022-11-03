@@ -64,14 +64,18 @@ footer {
     font-size: 18px;
 }
 /*For the buttons*/
+body
+{
+    background-color: whitesmoke;
+}
 #adminBut
 {
     background-color: rgb(135, 206, 250);
     font-size: 18px;
     border: none;
     position: absolute;
-    left: 50px;
-    bottom: 50px;
+    left: 15%;
+    bottom: 20%;
     padding: 15px;
 }
 #clientBut
@@ -80,11 +84,10 @@ footer {
     font-size: 18px;
     border: none;
     position: absolute;
-    bottom: 50px;
-    left: 300px;
+    bottom: 20%;
+    left: 40%;
     padding: 15px;
 }
-/*formatting in the welcome page */
 #txt1
 {
     font-size: 35px;
@@ -94,15 +97,15 @@ footer {
 {
     font-size: 20px;
     position: absolute;
-    left: 50px;
-    bottom: 100px;
+    left: 15%;
+    bottom: 30%;
 }
 #txt3
 {
     font-size: 20px;
     position: absolute;
-    left: 300px;
-    bottom: 100px;
+    left: 40%;
+    bottom: 30%;
 }
 
 /*This is for the calendar page*/
