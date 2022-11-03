@@ -7,7 +7,7 @@ exports.index = (req, res)=>{
 };
 
 exports.calendar = (req, res) => {
-    res.render('./client/calendar')
+    res.render('./client/calendar');
 }
 
 exports.home = (req, res)=>{

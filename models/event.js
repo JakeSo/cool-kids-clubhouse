@@ -5,27 +5,27 @@ const { DateTime } = require('luxon');
 const events = [
     {
         id: '1',
-        title: 'TEST EVENT',
-        details: 'Information about the event goes here',
-        date: DateTime.fromISO("2022-11-05").toLocaleString(DateTime.DATE_SHORT),
-        location: 'Somewhere',
-        host: 'Person Person'
+        title: 'Pizza Night',
+        details: 'Come enjoy pizza with plenty of other cool kids!',
+        date: '11/4/2022',
+        location: 'UNCC Woodward Hall',
+        host: 'Bob'
     },
     {
         id: '2',
-        title: 'TEST EVENT 2',
-        details: 'Here is information and details about the event.',
-        date: DateTime.fromISO("2022-11-17").toLocaleString(DateTime.DATE_SHORT),
-        location: 'Location',
-        host: 'John Smith'
+        title: 'Movie Night',
+        details: 'If you love movies just as much as me come join the cool kids for a movie night!',
+        date: '11/5/2022',
+        location: 'UNCC Student Union',
+        host: 'John'
     },
     {
         id: '3',
-        title: 'TEST EVENT 3',
-        details: 'Woah, would you look at that? Event details! Imagine that.',
-        date: DateTime.fromISO("2022-11-30").toLocaleString(DateTime.DATE_SHORT),
-        location: 'Location',
-        host: 'Someone Here'
+        title: "The Coolest Ninjas",
+        details: 'Come be a ninja with us cool kids at Ninja Nation!',
+        date: '11/6/2022',
+        location: 'Ninja Nation',
+        host: 'Mary'
     }
 ];
 

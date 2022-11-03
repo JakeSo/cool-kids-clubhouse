@@ -1,7 +1,6 @@
 //This is where the call back functions for the admin side of the website will go
 const model = require('../models/event');
 
-
 exports.index = (req, res)=>{
     res.render('./admin/index');
 };
