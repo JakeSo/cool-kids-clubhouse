@@ -1,16 +1,19 @@
 <%- include('../partials/header.ejs') %>
 <main>
-<div class="rsvp-content">
-    <div class="rsvp event-details">
-        <h1 id="eventTitle" style="font-size: 4rem;"><%=event.title%></h1>
-        <h3 class="eventDetail" style="font-size: 1rem;"><%= event.location%> | <%= event.date%></h3>
+  <head>
+    
+  </head>
+<div class="rsvp card flex-row">
+    <div class="event-details">
+        <h1><%=event.title%></h1>
+        <h3><%= event.location%> | <%= event.date%></h3>
     </div>
     <div class="rsvp form">
-        <form id="client-login" name="client-login" action="/client/home" >
+        <form>
             <div class="div">
-              <label for="email" class="label">Email:</label>
-              <input class="text" type="email" name="email" placeholder="Enter your email:">
-              <input type="button" value="RSVP" style="vertical-align: middle;">
+              <label for="email" class="form-label">Email:</label>
+              <input class="form-control" type="email" name="email" placeholder="Enter your email:">
+              <input class="btn btn-primary" value="RSVP" style="vertical-align: middle;">
             </div>
           </form>
 
