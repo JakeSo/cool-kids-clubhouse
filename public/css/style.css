@@ -43,10 +43,12 @@ header nav a {
 footer {
     margin-top: 10px;
     margin-bottom: 0;
-    color: white;
-    position: absolute;
+    position: relative;
+    display: block;
     bottom: 0;
     width: 100%;
+    border-style: double;
+    border-color: rebeccapurple;
     margin-left: auto;
     margin-right: auto;
 }
@@ -72,15 +74,19 @@ footer {
     margin-left: 10%;
     font-size: 18px;
 }
+.welcome {
+    margin: 0 auto;
+    width: 60%;
+}
 
 /*For the buttons*/
 #adminBut {
     background-color: rgb(135, 206, 250);
     font-size: 18px;
     border: none;
-    position: absolute;
-    left: 15%;
-    bottom: 20%;
+    /* position: absolute; */
+    /* left: 15%;
+    bottom: 20%; */
     padding: 15px;
 }
 
@@ -88,9 +94,9 @@ footer {
     background-color: rgb(135, 206, 250);
     font-size: 18px;
     border: none;
-    position: absolute;
+    /* position: absolute;
     bottom: 20%;
-    left: 40%;
+    left: 40%; */
     padding: 15px;
 }
 
@@ -287,15 +293,12 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 .rsvp{
-    height: 50%;
-    width: 70%;
+
     /* float: inline-start; */
     display: flex;
-    justify-content: center;
-    align-items: center;
     font-weight: bold;
-    margin: 20% auto;
-    padding: 0 10%;
+    margin: 5% 10%;
+    padding: 10%;
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -312,10 +315,14 @@ input[type=text]:focus, input[type=password]:focus {
     overflow: hidden;
 }
 
+.form-control {
+    margin: 0 auto 5%;
+}
+
 .event-details {
-    padding: 0 5%;
+    padding: 0 5% 0 0;
+    max-width: 50%;
     color: rgb(98, 25, 128);
-    float: inline-start;
 }
 
 /*Label what page this css is used for*/
