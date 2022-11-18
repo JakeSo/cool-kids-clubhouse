@@ -1,49 +1,112 @@
 /*This is the style page where we will have all the CSS needed for both admin/clients*/
 /*This is for any header css*/
-.ckc-logo {
-    height: 100px;
-    width: 150px;
-    /* position: absolute; */
-}
 
-header {
+.header {
     /* flex: auto; */
     display: inline-block;
-    align-items: center;
-    height: 10%;
+    /* align-items: center; */
+    height: fit-content;
     width: 100%;
     background-color: rgb(98, 25, 128);
     /* margin-left: auto;
     margin-right: auto; */
 }
 
+.logo {
+    position: relative;
+    padding: 5%;
+}
+
+.ckc-logo {
+    height: 100px;
+    padding: 5px;
+    float: left;
+    width: 150px;
+    margin: auto 0;
+    /* position: absolute; */
+}
+
+
 .header-title {
+    justify-self: center;
+    margin: 0 auto;
+    font-weight: bold;
     text-align: center;
     vertical-align: middle;
+    width: fit-content;
     font-size: 50px;
     color: white;
     font-family: Verdana;
 }
 
-header nav {
+.header nav {
     text-align: right;
+    float: right;
     padding: 0px 20px;
     color: white;
     font-family: Verdana;
 }
-
-header nav a {
+.header li a {
     color: white;
     font-family: Verdana;
     text-decoration: none;
     vertical-align: bottom;
 }
 
+ul {
+    list-style: none;
+}
+
+ul li {
+    float: left;
+}
+
+.dropbtn {
+    margin-right: 10px;
+    /* width: fit-content; */
+}
+.dropdown:hover > ul,
+.dropdown:focus-within > ul,
+.dropdown-content:hover,
+.dropdown-content:focus {
+   visibility: visible;
+   opacity: 1;
+   background-color: rgb(98, 25, 128);
+   display: block;
+}
+
+.dropdown li {
+    clear: both;
+    width: 100%;
+}
+
+.dropdown
+.dropdown-content {
+  visibility: hidden;
+  z-index: 2;
+  opacity: 0;
+  min-width: 5rem;
+  position: absolute;
+  right: 0;
+  transition: all 0.5s ease;
+  /* margin-top: 1rem; */
+  margin-right: 10rem ;
+  padding-right: 8px;
+  display: none;
+  }
+
+  .dropdown-content li {
+    padding: 3px 0;
+  }
+  
+
+
+
 /*This is for any footer css*/
 footer {
     margin-top: 10px;
     margin-bottom: 0;
-    position: relative;
+    position: absolute;
     display: block;
     bottom: 0;
     width: 100%;

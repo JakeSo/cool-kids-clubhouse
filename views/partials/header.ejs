@@ -1,54 +1,73 @@
 <!--This is where the header/nav bar for our website will be located-->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css"
+    />
     <script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"></script>
 
     <style>
-        html,
-        body {
-            margin: 0px;
-            padding: 0px;
-            height: 100%;
-            /* overflow: hidden; */
-        }
+      html,
+      body {
+        margin: 0px;
+        padding: 0px;
+        height: 100%;
+        /* overflow: hidden; */
+      }
     </style>
     <script>
-        function init() {
-            scheduler.config.xml_date = "%Y-%m-%d %H:%i";
-            scheduler.init("scheduler_here", new Date(2022, 10, 2), "month");
-            // enables the dynamic loading
-            scheduler.setLoadMode("day");
+      function init() {
+        scheduler.config.xml_date = "%Y-%m-%d %H:%i";
+        scheduler.init("scheduler_here", new Date(2022, 10, 2), "month");
+        // enables the dynamic loading
+        scheduler.setLoadMode("day");
 
-            // load data from backend
-            scheduler.load("/data", "json");
-            // connect backend to scheduler
-            var dp = new dataProcessor("/data");
-            // set data exchange mode
-            dp.init(scheduler);
-            dp.setTransactionMode("POST", false);
-        }
+        // load data from backend
+        scheduler.load("/data", "json");
+        // connect backend to scheduler
+        var dp = new dataProcessor("/data");
+        // set data exchange mode
+        dp.init(scheduler);
+        dp.setTransactionMode("POST", false);
+      }
     </script>
 
     <title>Cool Kids Club</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="header-background">
-            <a href="/">
-                <img src="/images/cool-kids-logo.png" alt="ckc-logo" class="ckc-logo">
-            </a>
+      <div class="header">
+        <a class="logo" href="/">
+          <img
+            src="/images/cool-kids-logo.png"
+            alt="ckc-logo"
+            class="ckc-logo"
+          />
+        </a>
+
+        <h1 class="header-title">Cool Kids Clubhouse</h1>
+        <nav>
+          <ul>
             
-            <h1 class="header-title">Cool Kids Clubhouse</h1>
-            <nav>
-                Welcome, <a href="">[User's Name]</a> |
-                <a href="https://coolkidscampaign.org/">Cool Kids Home</a>
-            </nav>
-        </div>
+            <li class="dropdown"> Welcome, <a href="javascript:void(0)" aria-haspopup="true" class="dropbtn">[User's Name]</a>
+              <ul class="dropdown-content">
+                <li> <a href="#">Profile</a></li>
+                <li> <a href="#">Calendar</a></li>
+                <li><a href="#">Log out</a></li>
+              </ul>
+            </li>
+            <li></li>
+            <li><a href="https://coolkidscampaign.org/">Cool Kids Home</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
+  </body>
+</html>
