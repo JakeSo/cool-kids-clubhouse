@@ -3,14 +3,17 @@
     <main>
         <div class="welcome">
         <h1 id = "txt1">Welcome to the Cool Kids Clubhouse</h1>
-        <div class="portal">
-        <h2 id = "txt2">For Admin Use: </h2>
-        <button type = "button" id = "adminBut" onclick = "location.href = 'admin/';">Admin Page</button>
+        <div class="row">
+            <div class="portal">
+            <h2>For Admin Use: </h2>
+            <button type = "button" id = "adminBut" onclick = "location.href = 'admin/';">Admin Page</button>
+            </div>
+            <div class="portal">
+            <h2>For Client Use: </h3>
+             <button type = "button" id = "clientBut" onclick = "location.href = 'client/';">Client Page</button>
+            </div>
+            
         </div>
-       <div class="portal">
-        <h3 id = "txt3">For Client Use: </h3>
-         <button type = "button" id = "clientBut" onclick = "location.href = 'client/';">Client Page</button>
-       </div>
-        </div>
+    </div>
     </main>
 <%- include('./partials/footer.ejs') %>

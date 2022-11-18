@@ -137,49 +137,51 @@ footer {
     margin-left: 10%;
     font-size: 18px;
 }
-.welcome {
+
+.row {
+    display: flex;
+}
+
+
+.portal {
+    display: block;
+    width: fit-content;
+    padding: 10%;
+    justify-content: center;
     margin: 0 auto;
-    width: 60%;
+}
+
+.welcome {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 10% auto;
+    width: fit-content;
 }
 
 /*For the buttons*/
-#adminBut {
+.portal button {
     background-color: rgb(135, 206, 250);
     font-size: 18px;
     border: none;
+    margin: 0 auto;
+    width: 100%;
     /* position: absolute; */
     /* left: 15%;
     bottom: 20%; */
     padding: 15px;
 }
 
-#clientBut {
-    background-color: rgb(135, 206, 250);
-    font-size: 18px;
-    border: none;
-    /* position: absolute;
-    bottom: 20%;
-    left: 40%; */
-    padding: 15px;
-}
 
 #txt1 {
     font-size: 35px;
     text-align: center;
 }
 
-#txt2 {
-    font-size: 20px;
-    position: absolute;
-    left: 15%;
-    bottom: 30%;
-}
 
-#txt3 {
+.portal h2 {
     font-size: 20px;
-    position: absolute;
+    /* position: absolute;
     left: 40%;
-    bottom: 30%;
+    bottom: 30%; */
 }
 
 /*This is for the calendar page*/
