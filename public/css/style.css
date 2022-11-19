@@ -73,6 +73,7 @@ ul li {
    opacity: 1;
    background-color: rgb(98, 25, 128);
    display: block;
+   z-index: 5;
 }
 
 .dropdown li {
@@ -190,6 +191,7 @@ footer {
     margin-right: auto;
     height: 65%;
     width: 90%;
+    z-index: 0;
 }
 
 /*this is for the login*/
