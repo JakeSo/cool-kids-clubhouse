@@ -1,23 +1,25 @@
 <!--This is where we will show the client/admin the event-->
 <%- include('../partials/header.ejs') %>
 <main>
-    <h2 id="eventTitle"><%= event.title%></h2>
-    <div class="eventDetail">
-        <p><img src='/images/location-icon.png' height="15px" width="20px"><%= event.location%></p>
-        <p><img src='/images/clock-icon.png' height="20px" width="22px"><%= event.date %></p>
+    <div class="content">
+        <h2 id="eventTitle"><%= event.title%></h2>
+        <div class="eventDetail">
+            <p><img src='/images/location-icon.png' height="15px" width="20px"><%= event.location%></p>
+            <p><img src='/images/clock-icon.png' height="20px" width="22px"><%= event.date %></p>
+        </div>
+        <div class="eventDesc">
+            <p><b>Event hosted by <%= event.host%></b></p>
+            <p><%= event.details%></p>
+        </div>
+        
+        <br>
+        
+        <br><br>
+        <form>
+            <button id="eventUpdBtn" type = "submit" formmethod = "GET" formaction = "/admin/<%= event.id%>/edit">Update Event</button>
+            <button id="eventDltBtn" type = "submit" formmethod = "POST" formaction = "/admin/<%= event.id%>?_method=DELETE">Delete Event</button>
+        </form>
     </div>
-    <div class="eventDesc">
-        <p><b>Event hosted by <%= event.host%></b></p>
-        <p><%= event.details%></p>
-    </div>
-
-    <br>
-    
-    <br><br>
-    <form>
-        <button id="eventUpdBtn" type = "submit" formmethod = "GET" formaction = "/admin/<%= event.id%>/edit">Update Event</button>
-        <button id="eventDltBtn" type = "submit" formmethod = "POST" formaction = "/admin/<%= event.id%>?_method=DELETE">Delete Event</button>
-    </form>
     
 </main>
 <%- include('../partials/footer.ejs') %>

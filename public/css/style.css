@@ -134,7 +134,9 @@ footer {
     position: absolute;
     bottom: 0;
     color: darkgreen;
-    margin-left: 10%;
+    left: 100;
+    width: 100%;
+    text-align: center;
     font-size: 18px;
 }
 
@@ -151,10 +153,12 @@ footer {
     margin: 0 auto;
 }
 
-.welcome {
+.content {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 10% auto;
-    width: fit-content;
+    width: 60%;
+    text-align: center;
+    color: rgb(98, 25, 128);
 }
 
 /*For the buttons*/
@@ -207,16 +211,24 @@ input[type=text]:focus, input[type=password]:focus {
     background-color: #ddd;
     outline: none;
 }
-.admin-login, .client-login{
+/* .admin-login, .client-login{
     margin-left: 10%;
-}
-#loginButton{
-    background-color: rgb(135, 206, 250);
-    font-size: 18px;
+} */
+.btn{
+    max-width: 10rem;
+    background-color: rgb(98, 25, 128);
+    color: white;
+    height: 50px;
+    width: 150px;
+    margin: 0 auto;
     border: none;
-    margin-left: 100px;
-    padding: 10px;
     
+}
+
+.btn:hover{
+
+    background-color: rgb(126, 223, 175);
+
 }
 
 .div {
@@ -246,14 +258,18 @@ input[type=text]:focus, input[type=password]:focus {
 
 
 /*For event display page*/
+
+.events {
+    margin: 0 auto;
+    width:70%;
+}
 #eventTitle{
     font-family: Verdana;
     color:rgb(98, 25, 128);
-    margin-left: 8%;
-    margin-top: 2%;
+    margin: 10px auto;
+    text-align: center;
     border-bottom: rgb(98, 25, 128), 1px;
     display: block;
-    text-align: left;
 }
 
 .eventDetail{
@@ -261,20 +277,20 @@ input[type=text]:focus, input[type=password]:focus {
     color:rgb(98, 25, 128);
     font-size: smaller;
     display: block;
-    width: 50%;
+    width: 100%;
+    margin: 0 auto;
     background-color: #f1f1f1;
-    margin-left: 8%;
-    padding: 5px;
+    padding: 20px 0;
 }
 
 .eventDesc{
     font-family: Verdana;
     color:rgb(98, 25, 128);
     display: block;
-    width: 50%;
+    width: 100%;
     background-color: #f1f1f1;
-    margin-left: 8%;
-    padding: 5px;
+    margin: 0 auto;
+    padding: 20px 0;
     font-size: 11pt;
 }
 
@@ -294,16 +310,16 @@ input[type=text]:focus, input[type=password]:focus {
     background-color: rgb(128, 25, 111);
     color: white;
     height: 30px;
-    width: 150px;
-    margin-left: 12%;
+    width: 30%;
+    margin: 0 5%;
     border: none;
 }
 #eventDltBtn{
     background-color: rgb(128, 25, 111);
     color: white;
     height: 30px;
-    width: 150px;
-    margin-left: 12%;
+    width: 30%;
+    margin: 0 5%;
     border: none;
 }
 #eventUpdBtn:hover{
@@ -322,7 +338,7 @@ input[type=text]:focus, input[type=password]:focus {
 
 .eventListing{
     margin-left: 8%;
-    width: 60%;
+    width: 80%;
     border-color:rgb(98, 25, 128);
     border: 1px;
     border-style: solid;
