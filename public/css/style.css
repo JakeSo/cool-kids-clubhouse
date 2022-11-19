@@ -36,7 +36,7 @@
     width: fit-content;
     font-size: 50px;
     color: white;
-    font-family: Verdana;
+    font-family: 'Montserrat', Verdana, sans-serif;
 }
 
 .header nav {
@@ -44,11 +44,11 @@
     float: right;
     padding: 0px 20px;
     color: white;
-    font-family: Verdana;
+    font-family: 'Montserrat', Verdana, sans-serif;
 }
 .header li a {
     color: white;
-    font-family: Verdana;
+    font-family: 'Montserrat', Verdana, sans-serif;
     text-decoration: none;
     vertical-align: bottom;
 }
@@ -153,8 +153,13 @@ footer {
     margin: 0 auto;
 }
 
+<<<<<<< Updated upstream
 .content {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+=======
+.welcome {
+    font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+>>>>>>> Stashed changes
     margin: 10% auto;
     width: 60%;
     text-align: center;
@@ -237,7 +242,7 @@ input[type=text]:focus, input[type=password]:focus {
 
 .label {
     display: inline-block;
-    font-family: Verdana;
+    font-family: 'Montserrat', Verdana, sans-serif;
     width: 100px;
 }
 
@@ -264,7 +269,7 @@ input[type=text]:focus, input[type=password]:focus {
     width:70%;
 }
 #eventTitle{
-    font-family: Verdana;
+    font-family: 'Montserrat', Verdana, sans-serif;
     color:rgb(98, 25, 128);
     margin: 10px auto;
     text-align: center;
@@ -284,7 +289,7 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 .eventDesc{
-    font-family: Verdana;
+    font-family: 'Montserrat', Verdana, sans-serif;
     color:rgb(98, 25, 128);
     display: block;
     width: 100%;
@@ -358,7 +363,7 @@ input[type=text]:focus, input[type=password]:focus {
 }
 .eventListing p{
     margin-left: 5%;
-    font-family: Verdana;
+    font-family: 'Montserrat', Verdana, sans-serif;
     color:rgb(98, 25, 128);
 }
 
@@ -381,7 +386,7 @@ input[type=text]:focus, input[type=password]:focus {
     margin: 5% 10%;
     padding: 10%;
     text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Montserrat', Verdana, sans-serif;
 }
 
 
