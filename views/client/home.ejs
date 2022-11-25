@@ -1,17 +1,19 @@
 <%- include('../partials/header.ejs') %>
 <main>
-    <h2 id="eventHome">Cool Kids Upcoming Events</h2>
-    <%if(events.length) { %>
-        <%events.forEach(event=>{ %>
-            <a id="eventLink" href="./<%= event.id%>">
-            <div class="eventListing">
-                <h4><%= event.title%></h4>
-                <p><%= event.location%> | <%= event.date%></p>
-            </div></a>
-            <br>
-        <% }); %>
-   <% } else { %>
+    <div class="events">
+        <h2 id="eventHome">Cool Kids Upcoming Events</h2>
+        <%if(events.length) { %>
+            <%events.forEach(event=>{ %>
+                <a id="eventLink" href="./<%= event.id%>">
+                <div class="eventListing">
+                    <h4><%= event.title%></h4>
+                    <p><%= event.location%> | <%= event.date%></p>
+                </div></a>
+                <br>
+            <% }); %>
+        <% } else { %>
             <p>No upcoming events.</p>
-   <% } %>
+        <% } %>
+    </div>
 </main>
 <%- include('../partials/footer.ejs') %>

@@ -7,7 +7,7 @@
     /* align-items: center; */
     height: fit-content;
     width: 100%;
-    background-color: rgb(98, 25, 128);
+    background-color: #630460;
     /* margin-left: auto;
     margin-right: auto; */
 }
@@ -36,7 +36,7 @@
     width: fit-content;
     font-size: 50px;
     color: white;
-    font-family: Verdana;
+    font-family: 'Montserrat', Verdana, sans-serif;
 }
 
 .header nav {
@@ -44,11 +44,11 @@
     float: right;
     padding: 0px 20px;
     color: white;
-    font-family: Verdana;
+    font-family: 'Montserrat', Verdana, sans-serif;
 }
 .header li a {
     color: white;
-    font-family: Verdana;
+    font-family: 'Montserrat', Verdana, sans-serif;
     text-decoration: none;
     vertical-align: bottom;
 }
@@ -71,9 +71,8 @@ ul li {
 .dropdown-content:focus {
    visibility: visible;
    opacity: 1;
-   background-color: rgb(98, 25, 128);
+   background-color: #630460;
    display: block;
-   z-index: 5;
 }
 
 .dropdown li {
@@ -91,9 +90,10 @@ ul li {
   right: 0;
   transition: all 0.5s ease;
   /* margin-top: 1rem; */
-  margin-right: 10rem ;
+  margin-right: 12% ;
   padding-right: 8px;
   display: none;
+  z-index: 5;
   }
 
   .dropdown-content li {
@@ -107,7 +107,7 @@ ul li {
 footer {
     margin-top: 10px;
     margin-bottom: 0;
-    position: absolute;
+    position: relative;
     display: block;
     bottom: 0;
     width: 100%;
@@ -135,7 +135,9 @@ footer {
     position: absolute;
     bottom: 0;
     color: darkgreen;
-    margin-left: 10%;
+    left: 100;
+    width: 100%;
+    text-align: center;
     font-size: 18px;
 }
 
@@ -152,10 +154,12 @@ footer {
     margin: 0 auto;
 }
 
-.welcome {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 10% auto;
-    width: fit-content;
+.content {
+    font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+    margin: 5% auto;
+    width: 60%;
+    text-align: center;
+    color: #630460;
 }
 
 /*For the buttons*/
@@ -191,7 +195,6 @@ footer {
     margin-right: auto;
     height: 65%;
     width: 90%;
-    z-index: 0;
 }
 
 /*this is for the login*/
@@ -209,16 +212,24 @@ input[type=text]:focus, input[type=password]:focus {
     background-color: #ddd;
     outline: none;
 }
-.admin-login, .client-login{
+/* .admin-login, .client-login{
     margin-left: 10%;
-}
-#loginButton{
-    background-color: rgb(135, 206, 250);
-    font-size: 18px;
+} */
+.btn{
+    max-width: 10rem;
+    background-color: #630460;
+    color: white;
+    height: 50px;
+    width: 150px;
+    margin: 0 auto;
     border: none;
-    margin-left: 100px;
-    padding: 10px;
     
+}
+
+.btn:hover{
+
+    background-color: rgb(126, 223, 175);
+
 }
 
 .div {
@@ -227,7 +238,7 @@ input[type=text]:focus, input[type=password]:focus {
 
 .label {
     display: inline-block;
-    font-family: Verdana;
+    font-family: 'Montserrat', Verdana, sans-serif;
     width: 100px;
 }
 
@@ -248,40 +259,44 @@ input[type=text]:focus, input[type=password]:focus {
 
 
 /*For event display page*/
+
+.events {
+    margin: 0 auto;
+    width:70%;
+}
 #eventTitle{
-    font-family: Verdana;
-    color:rgb(98, 25, 128);
-    margin-left: 8%;
-    margin-top: 2%;
+    font-family: 'Montserrat', Verdana, sans-serif;
+    color:#630460;
+    margin: 10px auto;
+    text-align: center;
     border-bottom: rgb(98, 25, 128), 1px;
     display: block;
-    text-align: left;
 }
 
 .eventDetail{
     font-family: Helvetica;
-    color:rgb(98, 25, 128);
+    color:#630460;
     font-size: smaller;
     display: block;
-    width: 50%;
+    width: 100%;
+    margin: 0 auto;
     background-color: #f1f1f1;
-    margin-left: 8%;
-    padding: 5px;
+    padding: 20px 0;
 }
 
 .eventDesc{
-    font-family: Verdana;
-    color:rgb(98, 25, 128);
+    font-family: 'Montserrat', Verdana, sans-serif;
+    color:#630460;
     display: block;
-    width: 50%;
+    width: 100%;
     background-color: #f1f1f1;
-    margin-left: 8%;
-    padding: 5px;
+    margin: 0 auto;
+    padding: 20px 0;
     font-size: 11pt;
 }
 
 #rsvpBtn{
-    background-color: rgb(98, 25, 128);
+    background-color: #630460;
     color: white;
     height: 50px;
     width: 150px;
@@ -293,19 +308,19 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 #eventUpdBtn{
-    background-color: rgb(128, 25, 111);
+    background-color: #630460;
     color: white;
     height: 30px;
-    width: 150px;
-    margin-left: 12%;
+    width: 30%;
+    margin: 0 5%;
     border: none;
 }
 #eventDltBtn{
-    background-color: rgb(128, 25, 111);
+    background-color: #630460;
     color: white;
     height: 30px;
-    width: 150px;
-    margin-left: 12%;
+    width: 30%;
+    margin: 0 5%;
     border: none;
 }
 #eventUpdBtn:hover{
@@ -319,12 +334,12 @@ input[type=text]:focus, input[type=password]:focus {
 #eventHome{
     margin-left: 8%;
     font-family: Helvetica;
-    color: rgb(98, 25, 128);
+    color: #630460;
 }
 
 .eventListing{
     margin-left: 8%;
-    width: 60%;
+    width: 80%;
     border-color:rgb(98, 25, 128);
     border: 1px;
     border-style: solid;
@@ -340,18 +355,18 @@ input[type=text]:focus, input[type=password]:focus {
 .eventListing h4{
     margin-left: 5%;
     font-family: Helvetica;
-    color: rgb(98, 25, 128);
+    color: #630460;
 }
 .eventListing p{
     margin-left: 5%;
-    font-family: Verdana;
-    color:rgb(98, 25, 128);
+    font-family: 'Montserrat', Verdana, sans-serif;
+    color:#630460;
 }
 
 #newEventBtn{
     margin-left: 8%;
     padding: 5px;
-    background-color: rgb(98, 25, 128);
+    background-color:#630460;
     color: white;
     border: none;
 }
@@ -367,7 +382,7 @@ input[type=text]:focus, input[type=password]:focus {
     margin: 5% 10%;
     padding: 10%;
     text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Montserrat', Verdana, sans-serif;
 }
 
 
@@ -389,7 +404,7 @@ input[type=text]:focus, input[type=password]:focus {
 .event-details {
     padding: 0 5% 0 0;
     max-width: 50%;
-    color: rgb(98, 25, 128);
+    color: #630460;
 }
 
 /*Label what page this css is used for*/
