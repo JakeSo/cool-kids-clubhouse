@@ -1,0 +1,36 @@
+<%- include('../partials/header.ejs') %>
+<main class="client-login">
+ <div class="content">
+     <h1>Welcome to the Cool Kids Clubhouse!</h1>
+     <h2>Enter your information to get started</h2>
+
+  <!--add the form-->
+  <form id="client-login" name="client-login" action="/client/login">
+    <div class="div">
+        <label for="email" class="label">Email:</label>
+        <input class="text" type="text" id="email" name="email" placeholder="Enter email"><br>
+      </div>
+      <div class="div">
+        <label for="firstName" class="label">First Name:</label>
+        <input class="text" type="text" id="firstName" name="firstName" placeholder="Enter first name"><br>
+      </div>
+      <div class="div">
+        <label for="lastName" class="label">Last Name:</label>
+        <input class="text" type="text" id="lastName" name="lastName" placeholder="Enter last name"><br>
+      </div>
+    <div class="div">
+     <label for="username" class="label">Username:</label>
+     <input class="text" type="text" id="username" name="username" placeholder="Enter username"><br>
+   </div>
+   <div class="div">
+    <label for="password" class="label">Password:</label>
+    <input class="password" type="password" id="password" name="password" placeholder="Enter password"><br>
+   </div>
+   <button type="submit" class='btn'>Register</button>
+  </form>
+  
+  
+  
+ </div>
+</main>
+<%- include('../partials/footer.ejs') %>

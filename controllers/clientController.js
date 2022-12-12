@@ -34,3 +34,7 @@ exports.show = (req, res)=>{
         res.status(404).send('Event with id ' + id + ' does not exist.');
     }
 };
+
+exports.register = (req, res)=>{
+    res.render('./client/register');
+};

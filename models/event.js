@@ -66,4 +66,21 @@ exports.deleteById = function(id){
 exports.save = function(event){
     event.id = uuidv4();
     events.push(event);
-}
+} 
+
+//mongodb schema
+/*
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const eventSchema = new Schema({
+    title: {type: String, required: [true]},
+    details: {type: String, required: [true], minlength: [10]},
+    date: {type: String, required: [true]},
+    location: {type: String, required: [true]},
+    //change once users are implemented
+    host: {type: String, required: [true]}
+});
+
+module.exports = mongoose.model('Event', eventSchema);
+*/

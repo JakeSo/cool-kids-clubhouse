@@ -11,8 +11,12 @@ router.get('/home', controller.home);
 
 router.get('/calendar', controller.calendar);
 
+router.get('/register', controller.register);
+
 router.get('/:id', controller.show);
 
 router.get('/:id/rsvp', controller.rsvp);
+
+
 
 module.exports = router;

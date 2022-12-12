@@ -1,6 +1,27 @@
 <!--This is where we will create a new event for an admin to post-->
 <%- include('../partials/header.ejs') %>
 <main>
-    create new event
+    <div class="content">
+        <h2>Create a new event</h2>
+    <form class="eventNew" action='/admin' method='post'>
+        <div class="div">
+            <label for="title" class="label">Event Title:</label>
+            <input class="text" type="text" id="title" name="title" required><br>
+          </div>
+          <div class="div">
+            <label for="details" class="label">Details:</label>
+            <input class="text" type="text" id="details" name="details" required><br>
+          </div>
+          <div class="div">
+            <label for="date" class="label">Date:</label>
+            <input class="text" type="date" id="date" name="date" required><br>
+          </div>
+          <div class="div">
+            <label for="location" class="label">Location:</label>
+            <input class="text" type="text" id="location" name="location" required><br>
+          </div>
+        <button type="submit" class='btn'>Create Event</button>
+    </form>
+</div>
 </main>
 <%- include('../partials/footer.ejs') %>
