@@ -11,7 +11,7 @@ router.get('/home', controller.home);
 
 router.get('/calendar', controller.calendar);
 
-//allows to go to register page
+//redirects to the register page
 router.get('/register', controller.register);
 
 router.get('/:id', controller.show);
