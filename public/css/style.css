@@ -1,5 +1,6 @@
 /*This is the style page where we will have all the CSS needed for both admin/clients*/
 /*This is for any header css*/
+/*Recommend using % instead of px to fit different screens better*/
 
 .header {
     /* flex: auto; */
