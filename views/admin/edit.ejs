@@ -1,6 +1,27 @@
 <!--This is where the admin can edit/cancel their event-->
 <%- include('../partials/header.ejs') %>
 <main>
-    event edit page
+    <div class="content">
+        <h2>Edit event information</h2>
+    <form class="eventNew" action='/admin/<%= event.id%>?_method=PUT' method='post'>
+        <div class="div">
+            <label for="title" class="label">Event Title:</label>
+            <input class="text" type="text" id="title" name="title" value ="<%= event.title%>"required><br>
+          </div>
+          <div class="div">
+            <label for="details" class="label">Details:</label>
+            <input class="text" type="text" id="details" name="details" value ="<%= event.details%>"required><br>
+          </div>
+          <div class="div">
+            <label for="date" class="label">Date:</label>
+            <input class="text" type="date" id="date" name="date" value ="<%= event.date%>" required><br>
+          </div>
+          <div class="div">
+            <label for="location" class="label">Location:</label>
+            <input class="text" type="text" id="location" name="location" value ="<%= event.location%>"required><br>
+          </div>
+        <button type="submit" class='btn'>Update Event</button>
+    </form>
+</div>
 </main>
 <%- include('../partials/footer.ejs') %>
