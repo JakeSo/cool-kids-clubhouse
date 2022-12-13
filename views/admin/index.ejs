@@ -3,16 +3,16 @@
 <main class="content">
     <h1>Welcome back Admin!</h1>
     <h2>Enter your information to get started</h2>
-    <small>No account? <a href='/client/register'>Register here</a></small>
+    <small>No account? <a href='/admin/register'>Register here</a></small>
     <br>
-    <form id="admin-login" name="admin-login" action="#" >
+    <form id="admin-login" name="admin-login" action="/admin/login" method="POST">
       <div class="div">
-        <label for="username" class="label">Username:</label>
-        <input class="text" type="text" id="username" name="username" placeholder="Enter username"><br>
+        <label for="email" class="label">Email:</label>
+        <input class="text" type="email" id="email" name="email" placeholder="Enter email" required><br>
       </div>
       <div class="div">
       <label for="password" class="label">Password:</label>
-      <input class="password" type="password" id="password" name="password" placeholder="Enter password"><br>
+      <input class="password" type="password" id="password" name="password" placeholder="Enter password" required><br>
       </div>
     
 

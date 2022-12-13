@@ -1,24 +1,29 @@
 <!--This is where we will show all of the events that have been created-->
 <%- include('../partials/header.ejs') %>
-<main>
-   <div class="events">
-     <h2 id="eventHome">Cool Kids Upcoming Events</h2>
-     <form action="./new">
-         <button id="newEventBtn" type="submit">Create New Event</button>
-      </form>
-      <br>
-     <%if(events.length) { %>
-         <%events.forEach(event=>{ %>
-             <a id="eventLink" href="./<%= event.id%>">
-             <div class="eventListing">
-                 <h4><%= event.title%></h4>
-                 <p><%= event.location%> | <%= event.date%></p>
-             </div></a>
-             <br>
-         <% }); %>
-    <% } else { %>
-             <p>No upcoming events.</p>
-    <% } %>
-   </div>
-</main>
-<%- include('../partials/footer.ejs') %>
+    <main>
+        <div class="events">
+            <h2 id="eventHome">Cool Kids Upcoming Events</h2>
+            <form action="./new">
+                <button id="newEventBtn" type="submit">Create New Event</button>
+            </form>
+            <br>
+            <%if(events.length) { %>
+                <%events.forEach(event=>{ %>
+                    <a id="eventLink" href="./<%= event.id%>">
+                        <div class="eventListing">
+                            <h4>
+                                <%= event.title%>
+                            </h4>
+                            <p>
+                                <%= event.location%> | <%= event.date%>
+                            </p>
+                        </div>
+                    </a>
+                    <br>
+                    <% }); %>
+                        <% } else { %>
+                            <p>No upcoming events.</p>
+                            <% } %>
+        </div>
+    </main>
+    <%- include('../partials/footer.ejs') %>

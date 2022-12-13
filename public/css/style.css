@@ -46,6 +46,7 @@
     color: white;
     font-family: 'Montserrat', Verdana, sans-serif;
 }
+
 .header li a {
     color: white;
     font-family: 'Montserrat', Verdana, sans-serif;
@@ -65,14 +66,15 @@ ul li {
     margin-right: 10px;
     /* width: fit-content; */
 }
-.dropdown:hover > ul,
-.dropdown:focus-within > ul,
+
+.dropdown:hover>ul,
+.dropdown:focus-within>ul,
 .dropdown-content:hover,
 .dropdown-content:focus {
-   visibility: visible;
-   opacity: 1;
-   background-color: #630460;
-   display: block;
+    visibility: visible;
+    opacity: 1;
+    background-color: #630460;
+    display: block;
 }
 
 .dropdown li {
@@ -80,26 +82,25 @@ ul li {
     width: 100%;
 }
 
-.dropdown
-.dropdown-content {
-  visibility: hidden;
-  z-index: 2;
-  opacity: 0;
-  min-width: 5rem;
-  position: absolute;
-  right: 0;
-  transition: all 0.5s ease;
-  /* margin-top: 1rem; */
-  margin-right: 12% ;
-  padding-right: 8px;
-  display: none;
-  z-index: 5;
-  }
+.dropdown .dropdown-content {
+    visibility: hidden;
+    z-index: 2;
+    opacity: 0;
+    min-width: 5rem;
+    position: absolute;
+    right: 0;
+    transition: all 0.5s ease;
+    /* margin-top: 1rem; */
+    margin-right: 12%;
+    padding-right: 8px;
+    display: none;
+    z-index: 5;
+}
 
-  .dropdown-content li {
+.dropdown-content li {
     padding: 3px 0;
-  }
-  
+}
+
 
 
 
@@ -212,10 +213,11 @@ input[type=text]:focus, input[type=password]:focus {
     background-color: #ddd;
     outline: none;
 }
+
 /* .admin-login, .client-login{
     margin-left: 10%;
 } */
-.btn{
+.btn {
     max-width: 10rem;
     background-color: #630460;
     color: white;
@@ -223,10 +225,10 @@ input[type=text]:focus, input[type=password]:focus {
     width: 150px;
     margin: 0 auto;
     border: none;
-    
+
 }
 
-.btn:hover{
+.btn:hover {
 
     background-color: rgb(126, 223, 175);
 
@@ -262,20 +264,21 @@ input[type=text]:focus, input[type=password]:focus {
 
 .events {
     margin: 0 auto;
-    width:70%;
+    width: 70%;
 }
-#eventTitle{
+
+#eventTitle {
     font-family: 'Montserrat', Verdana, sans-serif;
-    color:#630460;
+    color: #630460;
     margin: 10px auto;
     text-align: center;
     border-bottom: rgb(98, 25, 128), 1px;
     display: block;
 }
 
-.eventDetail{
+.eventDetail {
     font-family: Helvetica;
-    color:#630460;
+    color: #630460;
     font-size: smaller;
     display: block;
     width: 100%;
@@ -284,9 +287,9 @@ input[type=text]:focus, input[type=password]:focus {
     padding: 20px 0;
 }
 
-.eventDesc{
+.eventDesc {
     font-family: 'Montserrat', Verdana, sans-serif;
-    color:#630460;
+    color: #630460;
     display: block;
     width: 100%;
     background-color: #f1f1f1;
@@ -295,7 +298,7 @@ input[type=text]:focus, input[type=password]:focus {
     font-size: 11pt;
 }
 
-#rsvpBtn{
+#rsvpBtn {
     background-color: #630460;
     color: white;
     height: 50px;
@@ -303,11 +306,12 @@ input[type=text]:focus, input[type=password]:focus {
     margin-left: 12%;
     border: none;
 }
-#rsvpBtn:hover{
+
+#rsvpBtn:hover {
     background-color: rgb(126, 223, 175);
 }
 
-#eventUpdBtn{
+#eventUpdBtn {
     background-color: #630460;
     color: white;
     height: 30px;
@@ -315,7 +319,8 @@ input[type=text]:focus, input[type=password]:focus {
     margin: 0 5%;
     border: none;
 }
-#eventDltBtn{
+
+#eventDltBtn {
     background-color: #630460;
     color: white;
     height: 30px;
@@ -323,58 +328,65 @@ input[type=text]:focus, input[type=password]:focus {
     margin: 0 5%;
     border: none;
 }
-#eventUpdBtn:hover{
+
+#eventUpdBtn:hover {
     background-color: rgb(170, 49, 150);
 }
-#eventDltBtn:hover{
+
+#eventDltBtn:hover {
     background-color: rgb(170, 49, 150);
 }
 
 /*Event homepage styling*/
-#eventHome{
+#eventHome {
     margin-left: 8%;
     font-family: Helvetica;
     color: #630460;
 }
 
-.eventListing{
+.eventListing {
     margin-left: 8%;
     width: 80%;
-    border-color:rgb(98, 25, 128);
+    border-color: rgb(98, 25, 128);
     border: 1px;
     border-style: solid;
     border-radius: 5px;
     background-color: #f1f1f1;
 }
-#eventLink{
+
+#eventLink {
     text-decoration: none;
 }
-.eventListing:hover{
+
+.eventListing:hover {
     background-color: rgb(126, 223, 175);
 }
-.eventListing h4{
+
+.eventListing h4 {
     margin-left: 5%;
     font-family: Helvetica;
     color: #630460;
 }
-.eventListing p{
+
+.eventListing p {
     margin-left: 5%;
     font-family: 'Montserrat', Verdana, sans-serif;
-    color:#630460;
+    color: #630460;
 }
 
-#newEventBtn{
+#newEventBtn {
     margin-left: 8%;
     padding: 5px;
-    background-color:#630460;
+    background-color: #630460;
     color: white;
     border: none;
 }
-#newEventBtn:hover{
+
+#newEventBtn:hover {
     background-color: rgb(126, 223, 175);
 }
 
-.rsvp{
+.rsvp {
 
     /* float: inline-start; */
     display: flex;
@@ -391,6 +403,7 @@ input[type=text]:focus, input[type=password]:focus {
     align-self: center;
     font-weight: bold;
 }
+
 .rsvp h3 {
     width: fit-content;
     white-space: nowrap;
@@ -407,7 +420,22 @@ input[type=text]:focus, input[type=password]:focus {
     color: #630460;
 }
 
-/*Label what page this css is used for*/
+/*This is for flash messages Error/Success*/
+.success {
+    background: rgba(108, 192, 112, 0.7);
+    color: #fff;
+    width: 98%;
+    text-align: center;
+    padding: 10px 10px;
+}
+
+.error {
+    background: rgba(255, 102, 51, 0.7);
+    color: #fff;
+    width: 98%;
+    text-align: center;
+    padding: 10px 10px;
+}
 
 /*Label what page this css is used for*/
 

@@ -1,6 +1,13 @@
 <!--This is how we will handle errors that occur on our webpage-->
 <%- include('./partials/header.ejs') %>
-<main>
-    
-</main>
-<%- include('./partials/footer.ejs') %>
+    <main>
+        <div class="content">
+            <h3>
+                <%= error.status %> Error
+            </h3>
+            <p>
+                <%= error.message %>
+            </p>
+        </div>
+    </main>
+    <%- include('./partials/footer.ejs') %>

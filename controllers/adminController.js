@@ -1,62 +1,193 @@
 //This is where the call back functions for the admin side of the website will go
-const model = require('../models/event');
+const Event = require('../models/event');
+const adminUser = require('../models/adminUser');
 
-exports.index = (req, res)=>{
+exports.index = (req, res) => {
     res.render('./admin/index');
 };
 
-exports.home = (req, res)=>{
-    let events = model.find();
-    res.render('./admin/home', {events});
+exports.login = (req, res, next) => {
+    let email = req.body.email;
+    if (email) {
+        email = email.toLowerCase();
+    }
+    let password = req.body.password;
+    adminUser.findOne({ email: email })
+        .then(user => {
+            if (!user) {
+                req.flash('error', 'wrong email address');
+                res.redirect('/admin/');
+            } else {
+                user.comparePassword(password)
+                    .then(result => {
+                        if (result) {
+                            req.session.user = user._id;
+                            req.flash('success', 'You have successfully logged in');
+                            res.redirect('/admin/home');
+                        } else {
+                            req.flash('error', 'wrong password');
+                            res.redirect('/admin/');
+                        }
+                    });
+            }
+        })
+        .catch(err => next(err));
 };
 
-exports.new = (req, res)=>{
+exports.register = (req, res) => {
+    res.render('./admin/register');
+};
+
+exports.signUp = (req, res, next) => {
+    let user = new adminUser(req.body);
+    if (user.email) {
+        user.email = user.email.toLowerCase();
+    }
+    user.save()
+        .then(user => {
+            req.flash('success', 'Registration succeeded!');
+            res.redirect('/admin/');
+        })
+        .catch(err => {
+            if (err.name === 'ValidationError') {
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
+
+            if (err.code === 11000) {
+                req.flash('error', 'Email has been used');
+                return res.redirect('back');
+            }
+            next(err);
+        });
+};
+
+exports.profile = (req, res, next) => {
+    // let id = req.session.user;
+    // Promise.all([model.findById(id), Event.find({ author: id })])
+    //     .then(results => {
+    //         const [user, connections] = results;
+    //         res.render('./user/profile', { user, connections });
+    //     })
+    //     .catch(err => next(err));
+    res.render('./admin/profile');
+};
+
+
+exports.logout = (req, res, next) => {
+    req.session.destroy(err => {
+        if (err)
+            return next(err);
+        else
+            res.redirect('/');
+    });
+};
+
+exports.home = (req, res) => {
+    let events = Event.find();
+    res.render('./admin/home', { events });
+};
+
+exports.new = (req, res) => {
     res.render('./admin/new');
 };
 
-exports.create = (req, res)=>{
+exports.create = (req, res) => {
+    // let event = req.body;
+    // model.save(event);
+    // res.redirect('/admin/home');
+
+    let event = new Event(req.body);
+    // event.author = req.session.user;
+    event.save()
+        .then(event => {
+            // req.flash('success', 'Connection has been created successfully');
+            res.redirect('/admin/home');
+        })
+        .catch(err => {
+            if (err.name === 'ValidationError') {
+                // req.flash('error', err.message);
+                return res.redirect('/admin/home');
+            }
+            next(err);
+        });
+};
+
+exports.show = (req, res) => {
+    let connection = req.body;
+    let id = req.params.id;
+    Event.findById(id)
+        .then(event => {
+            console.log(event);
+            return res.render('./connection/show', { connection });
+        })
+        .catch(err => next(err));
+
+    // let id = req.params.id;
+    // let event = model.findById(id);
+    // if (event) {
+    //     res.render('./admin/show', { event });
+    // } else {
+    //     res.status(404).send('Event with id ' + id + ' does not exist.');
+    // }
+};
+
+exports.edit = (req, res) => {
+    let id = req.params.id;
+    Event.findById(id)
+        .then(event => {
+            res.render('./admin/edit', { event });
+        })
+        .catch(err => next(err));
+
+    // let id = req.params.id;
+    // let event = model.findById(id);
+    // if (event) {
+    //     res.render('./admin/edit', { event });
+    // } else {
+    //     res.status(404).send('Event with id ' + id + ' does not exist.')
+    // }
+};
+
+exports.update = (req, res) => {
     let event = req.body;
-    model.save(event);
-    res.redirect('/admin/home');
-};
-
-exports.show = (req, res)=>{
-    let id = req.params.id;
-    let event = model.findById(id);
-    if(event){
-        res.render('./admin/show', {event});
-    } else{
-        res.status(404).send('Event with id ' + id + ' does not exist.');
-    }
-};
-
-exports.edit = (req, res)=>{
-    let id = req.params.id;
-    let event = model.findById(id);
-    if(event){
-        res.render('./admin/edit', {event});
-    } else{
-        res.status(404).send('Event with id ' + id + ' does not exist.')
-    }
-};
-
-exports.update = (req, res)=>{
-    let event = req.body;
     let id = req.params.id;
 
-    if(model.updateById(id, event)){
-        res.redirect('/admin/home');
-    } else{
-        res.status(404).send('Event with id ' + id + ' does not exist.')
-    }
+    Event.findByIdAndUpdate(id, event, { useFindAndModify: false, runValidators: true })
+        .then(event => {
+            res.redirect('/admin/' + id);
+        })
+        .catch(err => {
+            if (err.name === 'ValidationError') {
+                // req.flash('error', err.message);
+                return res.redirect('/back');
+            }
+            next(err);
+        });
+
+    // let event = req.body;
+    // let id = req.params.id;
+
+    // if (model.updateById(id, event)) {
+    //     res.redirect('/admin/home');
+    // } else {
+    //     res.status(404).send('Event with id ' + id + ' does not exist.')
+    // }
 };
 
-exports.delete = (req, res)=>{
+exports.delete = (req, res) => {
     let id = req.params.id;
-    if(model.deleteById(id)){
-        res.redirect('/admin/home');
-    } else{
-        res.status(404).send('Event with id ' + id + ' does not exist.')
-    }
-};
 
+    Event.findByIdAndDelete(id, { useFindAndModify: false })
+        .then(event => {
+            res.redirect('/admin/home');
+        })
+        .catch(err => next(err));
+
+    // let id = req.params.id;
+    // if (model.deleteById(id)) {
+    //     res.redirect('/admin/home');
+    // } else {
+    //     res.status(404).send('Event with id ' + id + ' does not exist.')
+    // }
+};
