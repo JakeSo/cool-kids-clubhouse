@@ -1,20 +1,41 @@
 <%- include('../partials/header.ejs') %>
-<body onload="init();">
-    <main class="calendar-size">
-        <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
-            <div class="dhx_cal_navline">
-                <div class="dhx_cal_prev_button">&nbsp;</div>
-                <div class="dhx_cal_next_button">&nbsp;</div>
-                <div class="dhx_cal_today_button"></div>
-                <div class="dhx_cal_date"></div>
-                <div class="dhx_cal_tab" name="day_tab"></div>
-                <div class="dhx_cal_tab" name="week_tab"></div>
-                <div class="dhx_cal_tab" name="month_tab"></div>
+    <script>
+        function init() {
+            scheduler.config.xml_date = "%Y-%m-%d";
+            scheduler.init("scheduler_here", new Date(), "month");
+            // enables the dynamic loading
+            scheduler.setLoadMode("day");
+
+            for(var i = 0; i < events.length; i++) {
+                scheduler.addEvent([{start_date: events[i].start_date, end_date: events[i].end_date, text: events[i].title }]);
+            }
+            // load data from backend
+            // scheduler.parse(events);
+            scheduler.load("/data", "json");
+            // connect backend to scheduler
+            var dp = new dataProcessor("/data");
+            // set data exchange mode
+            dp.init(scheduler);
+            dp.setTransactionMode("POST", false);
+        }
+    </script>
+
+    <body onload="init();">
+        <main class="calendar-size">
+            <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+                <div class="dhx_cal_navline">
+                    <div class="dhx_cal_prev_button">&nbsp;</div>
+                    <div class="dhx_cal_next_button">&nbsp;</div>
+                    <div class="dhx_cal_today_button"></div>
+                    <div class="dhx_cal_date"></div>
+                    <div class="dhx_cal_tab" name="day_tab"></div>
+                    <div class="dhx_cal_tab" name="week_tab"></div>
+                    <div class="dhx_cal_tab" name="month_tab"></div>
+                </div>
+                <div class="dhx_cal_header">
+                </div>
+                <div class="dhx_cal_data">
+                </div>
             </div>
-            <div class="dhx_cal_header">
-            </div>
-            <div class="dhx_cal_data">
-            </div>
-        </div>
-    </main>
-<%- include('../partials/footer.ejs') %>
+        </main>
+        <%- include('../partials/footer.ejs') %>

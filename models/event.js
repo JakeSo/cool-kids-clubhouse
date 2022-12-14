@@ -7,7 +7,8 @@ const eventSchema = new Schema ({
     author: {type: Schema.Types.ObjectId, ref: 'User'},
     details: {type: String, required: [true, 'content is required'], minLength: [10, 'the content should have a least 10 characters']},
     location: {type: String, required: [true, 'location is required']},
-    date: {type: String, required: [true, 'date is required']}},
+    start_date: {type: String, required: [true, 'date is required']},
+    end_date: {type: String, required: [true, 'date is required']}},
     {timestamps: true}
 );
 

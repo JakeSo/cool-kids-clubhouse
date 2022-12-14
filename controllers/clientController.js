@@ -10,7 +10,8 @@ exports.index = (req, res)=>{
 
 //renders client calendar
 exports.calendar = (req, res) => {
-    res.render('./client/calendar');
+    let events = model.find();
+    res.render('./client/calendar', {events});
 };
 
 exports.rsvp = (req, res) => {
