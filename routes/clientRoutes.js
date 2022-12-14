@@ -14,6 +14,9 @@ router.get('/calendar', controller.calendar);
 //redirects to the register page
 router.get('/register', controller.register);
 
+//completes client sign up
+router.post('/', controller.signUp);
+
 router.get('/:id', controller.show);
 
 router.get('/:id/rsvp', controller.rsvp);
