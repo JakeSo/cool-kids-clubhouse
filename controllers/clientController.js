@@ -4,53 +4,57 @@ const model = require('../models/event');
 
 
 //renders client login page
-exports.index = (req, res)=>{
+exports.index = (req, res) => {
     res.render('./client/index');
 };
 
 //renders client calendar
-exports.calendar = (req, res) => {
-    res.render('./client/calendar');
+exports.calendar = (req, res, next) => {
+    model.find()
+        .then(events => {
+            res.render('./client/calendar', { events });
+        })
+        .catch(err => next(err));
 };
 
 exports.rsvp = (req, res) => {
     let id = req.params.id;
     let event = model.findById(id);
-    if(event){
-        res.render('./client/rsvp', {event});
-    } else{
+    if (event) {
+        res.render('./client/rsvp', { event });
+    } else {
         res.status(404).send('Event with id ' + id + ' does not exist.')
     }
 };
 
 //displays entire list of events
-exports.home = (req, res)=>{
+exports.home = (req, res) => {
     model.find()
-    .then(events=>{
-        res.render('./client/home', { events });
-    })
-    .catch(err=>next(err));
+        .then(events => {
+            res.render('./client/home', { events });
+        })
+        .catch(err => next(err));
 };
 
 //displays events for client
 //needs to be refactored
-exports.show = (req, res)=>{
+exports.show = (req, res) => {
     let id = req.params.id;
     let event = model.findById(id);
-    if(event){
-        res.render('./client/show', {event});
-    } else{
+    if (event) {
+        res.render('./client/show', { event });
+    } else {
         res.status(404).send('Event with id ' + id + ' does not exist.');
     }
 };
 
 //renders client register page
-exports.register = (req, res)=>{
+exports.register = (req, res) => {
     res.render('./client/register');
 };
 
 //creates client account
-exports.signUp = (req, res, nexxt)=>{
+exports.signUp = (req, res, nexxt) => {
     let user = new Client(req.body);
     if (user.email) {
         user.email = user.email.toLowerCase();
