@@ -76,9 +76,13 @@ exports.profile = (req, res, next) => {
 
 //moved logout to mainController
 
+
 exports.home = (req, res) => {
-    let events = Event.find();
-    res.render('./admin/home', { events });
+    Event.find()
+    .then(events=>{
+        res.render('./admin/home', { events });
+    })
+    .catch(err=>next(err));
 };
 
 exports.new = (req, res) => {
