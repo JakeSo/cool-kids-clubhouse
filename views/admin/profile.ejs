@@ -9,7 +9,7 @@
             <br>
             <%if(events.length) { %>
                 <%events.forEach(event=>{ %>
-                    <a id="eventLink" href="./<%= event.id%>">
+                    <a id="eventLink" href="./<%= event._id%>">
                         <div class="eventListing">
                             <h4>
                                 <%= event.title%>
