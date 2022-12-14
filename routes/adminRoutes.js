@@ -27,7 +27,7 @@ router.get('/new', isLoggedIn, controller.new);
 router.post('/profile', isLoggedIn, validateEvent, validateResult, controller.create);
 
 //show specific event   /admin/:id
-router.get('/:id', validateId, controller.show);
+router.get('/:id', validateId, isLoggedIn, controller.show);
 
 //redirects to edit page    /admin/:id/edit
 router.get('/:id/edit', validateId, isLoggedIn, isAuthor, controller.edit);

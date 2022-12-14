@@ -4,7 +4,7 @@
         <h2 id="eventHome">Cool Kids Upcoming Events</h2>
         <%if(events.length) { %>
             <%events.forEach(event=>{ %>
-                <a id="eventLink" href="./<%= event.id%>">
+                <a id="eventLink" href="./<%= event._id%>">
                 <div class="eventListing">
                     <h4><%= event.title%></h4>
                     <p><%= event.location%> | <%= event.date%></p>

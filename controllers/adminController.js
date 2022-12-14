@@ -95,7 +95,6 @@ exports.create = (req, res) => {
 };
 
 exports.show = (req, res) => {
-    let connection = req.body;
     let id = req.params.id;
     Event.findById(id)
         .then(event => {

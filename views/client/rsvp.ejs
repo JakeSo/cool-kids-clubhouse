@@ -12,20 +12,26 @@
   <div class="row justify-content-center align-items-center">
     <div class="event-details">
         <h1><%=event.title%></h1>
-        <h5><%= event.location%> | <%= event.date%></h3>
+        <h5><%= event.location%> <br> <%= event.date%></h5>
           <hr>
-        <p><%= event.details%></p>
     </div>
-        <form>
+        <form action="/client/<%= id%>/rsvp/" action="POST">
             <div class="form-group">
-              <label for="name" class="form-label">Name:</label>
+              <!--<label for="name" class="form-label">Name:</label>
               <input class="form-control" type="name" name="name" placeholder="Enter your name:">
               <label for="email" class="form-label">Email:</label>
-              <input class="form-control" type="email" name="email" placeholder="Enter your email:">
+              <input class="form-control" type="email" name="email" placeholder="Enter your email:"> -->
+              <label for="going" class="form-label">Going?</label>
+              <select name="going" id="going">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="maybe">Maybe</option>
+              </select>
+              <br>
               <label for="guests" class="form-label">Guests:</label>
-              <input class="form-control" style="width: 70px;" type="number" name="guests" value="0" placeholder="Guests:">
+              <input class="form-control" style="width: 70px;" type="number" name="guests" id="guests" value="0" placeholder="Guests:">
               
-              <input class="btn btn-primary" value="RSVP" style="vertical-align: middle;">
+              <button type="submit" class="btn btn-primary" value="RSVP" style="vertical-align: middle;">RSVP</button>
             </div>
         </form>
   </div>
