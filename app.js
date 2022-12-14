@@ -9,6 +9,7 @@ var bodyParser = require("body-parser");
 const methodOveride = require('method-override')
 const adminRoutes = require('./routes/adminRoutes');
 const clientRoutes = require('./routes/clientRoutes');
+const mainRoutes = require('./routes/mainRoutes');
 
 //Create the app
 const app = express();
@@ -55,12 +56,9 @@ app.use(morgan('tiny'));
 app.use(methodOveride('_method'));
 
 //Set up app routes
-app.get('/', (req, res) => {
-    res.render('index');
-});
 
 app.use('/client', clientRoutes);
-
+app.use('', mainRoutes);
 app.use('/admin', adminRoutes);
 
 //is necessary for parsing POST request

@@ -20,8 +20,7 @@ router.post('/', isGuest, validateSignUp, validateResult, controller.signUp);
 //GET /users/profile: send user's profile page
 router.get('/profile', isLoggedIn, controller.profile);
 
-//POST /users/logout: logout a user
-router.get('/logout', isLoggedIn, controller.logout);
+
 
 //homepage page  /admin/home
 router.get('/home', isLoggedIn, controller.home);

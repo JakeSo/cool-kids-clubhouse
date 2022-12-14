@@ -63,25 +63,18 @@ exports.signUp = (req, res, next) => {
 };
 
 exports.profile = (req, res, next) => {
-    // let id = req.session.user;
-    // Promise.all([model.findById(id), Event.find({ author: id })])
-    //     .then(results => {
-    //         const [user, connections] = results;
-    //         res.render('./user/profile', { user, connections });
-    //     })
-    //     .catch(err => next(err));
-    res.render('./admin/profile');
+     let id = req.session.user;
+     Promise.all([adminUser.findById(id), Event.find({ author: id })])
+         .then(results => {
+             const [user, events] = results;
+             res.render('./admin/home', { user, events });
+         })
+         .catch(err => next(err));
+    //res.render('./admin/home');
 };
 
 
-exports.logout = (req, res, next) => {
-    req.session.destroy(err => {
-        if (err)
-            return next(err);
-        else
-            res.redirect('/');
-    });
-};
+//moved logout to mainController
 
 exports.home = (req, res) => {
     let events = Event.find();
@@ -93,20 +86,16 @@ exports.new = (req, res) => {
 };
 
 exports.create = (req, res) => {
-    // let event = req.body;
-    // model.save(event);
-    // res.redirect('/admin/home');
-
     let event = new Event(req.body);
-    // event.author = req.session.user;
+    event.author = req.session.user;
     event.save()
         .then(event => {
-            // req.flash('success', 'Connection has been created successfully');
+            req.flash('success', 'Connection has been created successfully');
             res.redirect('/admin/home');
         })
         .catch(err => {
             if (err.name === 'ValidationError') {
-                // req.flash('error', err.message);
+                req.flash('error', err.message);
                 return res.redirect('/admin/home');
             }
             next(err);
