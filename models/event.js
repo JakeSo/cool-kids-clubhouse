@@ -5,7 +5,6 @@ const eventSchema = new Schema ({
     id: {type: String},
     title: {type: String, requried: [true, 'title is required']},
     author: {type: Schema.Types.ObjectId, ref: 'User'},
-    host: {type: String, required: [true, 'host is required']},
     details: {type: String, required: [true, 'content is required'], minLength: [10, 'the content should have a least 10 characters']},
     location: {type: String, required: [true, 'location is required']},
     date: {type: String, required: [true, 'date is required']}},

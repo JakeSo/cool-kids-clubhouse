@@ -23,7 +23,7 @@ exports.login = (req, res, next) => {
                         if (result) {
                             req.session.user = user._id;
                             req.flash('success', 'You have successfully logged in');
-                            res.redirect('/admin/home');
+                            res.redirect('/admin/profile');
                         } else {
                             req.flash('error', 'wrong password');
                             res.redirect('/admin/');
@@ -63,23 +63,23 @@ exports.signUp = (req, res, next) => {
 };
 
 exports.profile = (req, res, next) => {
-     let id = req.session.user;
-     Promise.all([adminUser.findById(id), Event.find({ author: id })])
-         .then(results => {
-             const [user, events] = results;
-             res.render('./admin/home', { user, events });
-         })
-         .catch(err => next(err));
+    let id = req.session.user;
+    Promise.all([adminUser.findById(id), Event.find({ author: id })])
+        .then(results => {
+            const [user, events] = results;
+            res.render('./admin/profile', { user, events });
+        })
+        .catch(err => next(err));
     //res.render('./admin/home');
 };
 
 
 //moved logout to mainController
 
-exports.home = (req, res) => {
-    let events = Event.find();
-    res.render('./admin/home', { events });
-};
+// exports.home = (req, res) => {
+//     let events = Event.find();
+//     res.render('./admin/home', { events });
+// };
 
 exports.new = (req, res) => {
     res.render('./admin/new');
@@ -91,12 +91,12 @@ exports.create = (req, res) => {
     event.save()
         .then(event => {
             req.flash('success', 'Connection has been created successfully');
-            res.redirect('/admin/home');
+            res.redirect('/admin/profile');
         })
         .catch(err => {
             if (err.name === 'ValidationError') {
                 req.flash('error', err.message);
-                return res.redirect('/admin/home');
+                return res.redirect('/admin/new');
             }
             next(err);
         });
@@ -108,7 +108,7 @@ exports.show = (req, res) => {
     Event.findById(id)
         .then(event => {
             console.log(event);
-            return res.render('./connection/show', { connection });
+            return res.render('./admin/show', { event });
         })
         .catch(err => next(err));
 
@@ -169,7 +169,7 @@ exports.delete = (req, res) => {
 
     Event.findByIdAndDelete(id, { useFindAndModify: false })
         .then(event => {
-            res.redirect('/admin/home');
+            res.redirect('/admin/profile');
         })
         .catch(err => next(err));
 
