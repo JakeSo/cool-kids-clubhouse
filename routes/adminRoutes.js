@@ -24,7 +24,7 @@ router.get('/profile', isLoggedIn, controller.profile);
 //new event page /admin/new
 router.get('/new', isLoggedIn, controller.new);
 
-router.post('/profile', isLoggedIn, validateConnections, validateResult, controller.create);
+router.post('/profile', isLoggedIn, validateEvent, validateResult, controller.create);
 
 //show specific event   /admin/:id
 router.get('/:id', validateId, controller.show);
