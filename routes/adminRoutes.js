@@ -21,15 +21,11 @@ router.post('/', isGuest, validateSignUp, validateResult, controller.signUp);
 router.get('/profile', isLoggedIn, controller.profile);
 
 
-
-//homepage page  /admin/home
-// router.get('/home', controller.home);
-
 //new event page /admin/new
 router.get('/new', isLoggedIn, controller.new);
 
 //
-router.post('/home', isLoggedIn, validateConnections, validateResult, controller.create);
+router.post('/profile', isLoggedIn, validateConnections, validateResult, controller.create);
 
 //show specific event   /admin/:id
 router.get('/:id', validateId, controller.show);
