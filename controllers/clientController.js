@@ -1,5 +1,5 @@
 //This is where the call back functions for the client side of the website will go
-const clientUser = require('../models/clientUser');
+const Client = require('../models/clientUser');
 const model = require('../models/event');
 
 
@@ -27,7 +27,7 @@ exports.rsvp = (req, res) => {
 exports.home = (req, res)=>{
     model.find()
     .then(events=>{
-        res.render('./admin/home', { events });
+        res.render('./client/home', { events });
     })
     .catch(err=>next(err));
 };
@@ -51,7 +51,7 @@ exports.register = (req, res)=>{
 
 //creates client account
 exports.signUp = (req, res, nexxt)=>{
-    let user = new clientUser(req.body);
+    let user = new Client(req.body);
     if (user.email) {
         user.email = user.email.toLowerCase();
     }
@@ -82,7 +82,7 @@ exports.login = (req, res, next) => {
         email = email.toLowerCase();
     }
     let password = req.body.password;
-    clientUser.findOne({ email: email })
+    Client.findOne({ email: email })
         .then(user => {
             if (!user) {
                 req.flash('error', 'wrong email address');
