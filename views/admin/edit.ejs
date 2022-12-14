@@ -3,7 +3,7 @@
 <main>
     <div class="content">
         <h2>Edit event information</h2>
-    <form class="eventNew" action='/admin/<%= event.id%>?_method=PUT' method='post'>
+    <form class="eventNew" action='/admin/<%= event._id%>?_method=PUT' method='POST'>
         <div class="div">
             <label for="title" class="label">Event Title:</label>
             <input class="text" type="text" id="title" name="title" value ="<%= event.title%>"required><br>
