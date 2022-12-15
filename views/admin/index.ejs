@@ -4,7 +4,7 @@
 <main class="content">
     <h1>Welcome back Admin!</h1>
     <h2>Enter your information to get started</h2>
-    <small>No account? <a href='/admin/register'>Register here</a></small>
+    
     <br>
     <form id="admin-login" name="admin-login" action="/admin/login" method="POST">
       <div class="div">
@@ -15,7 +15,8 @@
       <label for="password" class="label">Password:</label>
       <input class="password" type="password" id="password" name="password" placeholder="Enter password" required><br>
       </div>
-    
+      <small>No account? <a href='/admin/register'>Register here</a></small>
+    <br>
       <button class="btn">Login</button>
     </form>
     <!--<a href= '/admin/home'></a>-->
