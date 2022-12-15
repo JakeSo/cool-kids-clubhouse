@@ -17,6 +17,8 @@ router.get('/register', isGuest, controller.register);
 
 router.post('/', isGuest, validateSignUp, validateResult, controller.signUp);
 
+router.get('/calendar', controller.calendar);
+
 //GET /admin/profile: send user's profile page
 router.get('/profile', isLoggedIn, isAdmin, controller.profile);
 

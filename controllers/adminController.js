@@ -76,7 +76,12 @@ exports.profile = (req, res, next) => {
 
 
 exports.new = (req, res) => {
-    res.render('./admin/new');
+    let id = req.session.user;
+    adminUser.findById(id)
+        .then(user => {
+            res.render('./admin/new', { user });
+        })
+        .catch(err => next(err));
 };
 
 exports.create = (req, res) => {
@@ -98,19 +103,19 @@ exports.create = (req, res) => {
 
 exports.show = (req, res, next) => {
     let id = req.params.id;
-    
-    Promise.all([Event.findById(id), Rsvp.find({event: id}).populate('client', 'firstName lastName')])
+    let user_id = req.session.user;
+    Promise.all([Event.findById(id), Rsvp.find({ event: id }).populate('client', 'firstName lastName'), adminUser.findById(user_id)])
         .then(results => {
-            const [event, rsvps] = results;
-            res.render('./admin/show', { event, rsvps });
+            const [event, rsvps, user] = results;
+            res.render('./admin/show', { event, rsvps, user });
         })
         .catch(err => next(err));
 
-        /*Event.findById(id)
-        .then(event => {
-            return res.render('./admin/show', { event });
-        })
-        .catch(err => next(err)); */
+    /*Event.findById(id)
+    .then(event => {
+        return res.render('./admin/show', { event });
+    })
+    .catch(err => next(err)); */
 
     // let id = req.params.id;
     // let event = model.findById(id);
@@ -122,10 +127,18 @@ exports.show = (req, res, next) => {
 };
 
 exports.edit = (req, res) => {
-    let id = req.params.id;
-    Event.findById(id)
-        .then(event => {
-            res.render('./admin/edit', { event });
+    // let id = req.params.id;
+    // let user_id = req.session.user;
+    // Event.findById(id)
+    //     .then(event => {
+    //         res.render('./admin/edit', { event });
+    //     })
+    //     .catch(err => next(err));
+
+    Promise.all([adminUser.findById(user_id), Event.findById({ author: id })])
+        .then(results => {
+            const [user, event] = results;
+            res.render('./admin/edit', { user, event });
         })
         .catch(err => next(err));
 
@@ -179,4 +192,15 @@ exports.delete = (req, res) => {
     // } else {
     //     res.status(404).send('Event with id ' + id + ' does not exist.')
     // }
+};
+
+//renders client calendar
+exports.calendar = (req, res, next) => {
+    let user_id = req.session.user;
+    Promise.all([Event.find(), adminUser.findById(user_id)])
+        .then(results => {
+            const [events, user] = results;
+            res.render('./admin/calendar', { events, user });
+        })
+        .catch(err => next(err));
 };

@@ -42,34 +42,43 @@
   </script>
 
   <title>Cool Kids Club</title>
-  <link rel="icon" type="image/x-icon" href="/images/favicon.png"
-</head>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png" </head>
 
 <body>
   <header>
     <div class="header">
-      <a class="logo" href="/">
-        <img src="/images/cool-kids-logo.png" alt="ckc-logo" class="ckc-logo" />
-      </a>
+      <%if(!user) {%>
+        <a class="logo" href="/">
+          <img src="/images/cool-kids-logo.png" alt="ckc-logo" class="ckc-logo" />
+        </a>
+        <%} else if(user.status == "admin") {%>
+          <a class="logo" href="/admin/profile">
+            <img src="/images/cool-kids-logo.png" alt="ckc-logo" class="ckc-logo" />
+          </a>
+          <%} else if(user.status == "client") {%>
+            <a class="logo" href="/client/home">
+              <img src="/images/cool-kids-logo.png" alt="ckc-logo" class="ckc-logo" />
+            </a>
+            <%}%>
 
-      <h1 class="header-title">Cool Kids Clubhouse</h1>
-      <% if(user) { %>
-        <nav>
-          <ul>
-            <li class="dropdwn"> Welcome, <a href="javascript:void(0)" aria-haspopup="true" class="dropbtn">
-                <%= user.firstName %>
-              </a>
-              <ul class="dropdwn-content">
-                <li> <a href="/admin/profile">Profile</a></li>
-                <li> <a href="/client/calendar/">Calendar</a></li>
-                <li><a href="/logout">Log out</a></li>
-              </ul>
-            </li>
-            <li> |&nbsp;</li>
-            <li><a href="https://coolkidscampaign.org/">Cool Kids Home</a></li>
-          </ul>
-        </nav>
-        <%}%>
+            <h1 class="header-title">Cool Kids Clubhouse</h1>
+            <% if(user) { %>
+              <nav>
+                <ul>
+                  <li class="dropdwn"> Welcome, <a href="javascript:void(0)" aria-haspopup="true" class="dropbtn">
+                      <%= user.firstName %>
+                    </a>
+                    <ul class="dropdwn-content">
+                      <li> <a href="/<%= user.status %>/profile">Profile</a></li>
+                      <li> <a href="/<%= user.status %>/calendar/">Calendar</a></li>
+                      <li><a href="/logout">Log out</a></li>
+                    </ul>
+                  </li>
+                  <li> |&nbsp;</li>
+                  <li><a href="https://coolkidscampaign.org/">Cool Kids Home</a></li>
+                </ul>
+              </nav>
+              <%}%>
 
     </div>
   </header>
