@@ -10,6 +10,7 @@ const clientSchema = new Schema({
       unique: [true, 'this email address has been used']
     },
     password: { type: String, required: [true, 'password is required'] },
+    status: { type: String, default: "client"}
   }
   );
   

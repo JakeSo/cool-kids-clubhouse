@@ -1,71 +1,80 @@
 //This is where the call back functions for the client side of the website will go
 const Client = require('../models/clientUser');
+const adminUser = require('../models/adminUser');
 const model = require('../models/event');
 const Rsvp = require('../models/rsvp');
 
 
 //renders client login page
-exports.index = (req, res)=>{
+exports.index = (req, res) => {
     res.render('./client/index');
 };
 
 //renders client calendar
 exports.calendar = (req, res, next) => {
-    model.find()
-        .then(events => {
-            res.render('./client/calendar', { events });
+    let user_id = req.session.user;
+    Promise.all([model.find(), Client.findById(user_id)])
+        .then(results => {
+            const [events, user] = results;
+            res.render('./client/calendar', { events, user });
         })
         .catch(err => next(err));
 };
 
 //render rsvp page
 exports.rsvp = (req, res, next) => {
-        let id = req.params.id;
-        model.findById(id)
-        .then(event=>{
-            res.render('./client/rsvp', { event, id });
+    let id = req.params.id;
+    let user_id = req.session.user;
+    Promise.all([model.findById(id), Client.findById(user_id)])
+        .then(results => {
+            const [event, user] = results;
+            res.render('./client/rsvp', { event, user, id });
         })
-        .catch(err=>next(err));
+        .catch(err => next(err));
 };
 
 //complete rsvp 
-exports.rsvpGo = (req, res, next)=>{
-    Rsvp.findOneAndUpdate({client: req.session.user, event: req.params.id}, {going: req.body.going, guests: req.body.guests}, {upsert: true})
-    .then(rsvp=>{
-        res.redirect('/client/home');
-        req.flash('success', 'RSVP successful');
-    })
-    .catch(err=>next(err));
+exports.rsvpGo = (req, res, next) => {
+    Rsvp.findOneAndUpdate({ client: req.session.user, event: req.params.id }, { going: req.body.going, guests: req.body.guests }, { upsert: true })
+        .then(rsvp => {
+            res.redirect('/client/home');
+            req.flash('success', 'RSVP successful');
+        })
+        .catch(err => next(err));
 };
 
 //displays entire list of events
-exports.home = (req, res)=>{
-    model.find()
-    .then(events=>{
-        res.render('./client/home', { events });
-    })
-    .catch(err=>next(err));
+exports.home = (req, res) => {
+    let user_id = req.session.user;
+    Promise.all([model.find(), Client.findById(user_id)])
+        .then(results => {
+            const [events, user] = results;
+            res.render('./client/home', { events, user });
+        })
+        .catch(err => next(err));
 };
 
 //displays events for client
 //needs to be refactored
-exports.show = (req, res, next)=>{
+exports.show = (req, res, next) => {
     let id = req.params.id;
-    model.findById(id)
-        .then(event => {
+    let user_id = req.session.user;
+    Promise.all([model.findById(id), Client.findById(user_id)])
+        .then(results => {
+            const [event, user] = results;
             console.log(event);
-            return res.render('./client/show', { event });
+            return res.render('./client/show', { event, user });
         })
         .catch(err => next(err));
 };
 
 //renders client register page
-exports.register = (req, res)=>{
+exports.register = (req, res) => {
     res.render('./client/register');
 };
 
 //creates client account
-exports.signUp = (req, res, next)=>{
+exports.signUp = (req, res, next) => {
     let user = new Client(req.body);
     if (user.email) {
         user.email = user.email.toLowerCase();
@@ -120,10 +129,12 @@ exports.login = (req, res, next) => {
 };
 
 //renders client profile page
-exports.profile = (req, res, next)=>{
-    let id = req.session.user;
-    Rsvp.find({client: id}).populate('event', 'title date location')
-    .then(rsvps=>{
-        res.render('./client/profile', { rsvps });
-    })
+exports.profile = (req, res, next) => {
+    let user_id = req.session.user;
+    Promise.all([Rsvp.find({ client: user_id }).populate('event', 'title date location'), Client.findById(user_id)])
+        .then(results => {
+            const[rsvps, user] = results;
+            res.render('./client/profile', { rsvps, user });
+        })
+        .catch(err => next(err));
 };
