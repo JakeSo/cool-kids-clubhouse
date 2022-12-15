@@ -92,7 +92,7 @@ ul li {
     right: 0;
     transition: all 0.5s ease;
     /* margin-top: 1rem; */
-    margin-right: 12%;
+    margin-right: 150px;
     padding-right: 8px;
     display: none;
     z-index: 5;
@@ -109,7 +109,7 @@ ul li {
 footer {
     margin-top: 10px;
     margin-bottom: 0;
-    position: relative;
+    position: absolute;
     display: block;
     bottom: 0;
     width: 100%;
@@ -160,6 +160,7 @@ footer {
     font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
     margin: 5% auto;
     width: 60%;
+    max-width: 700px;
     text-align: center;
     color: #630460;
 }
@@ -170,6 +171,19 @@ footer {
     font-size: 18px;
     border: none;
     margin: 0 auto;
+    width: 100%;
+    /* position: absolute; */
+    /* left: 15%;
+    bottom: 20%; */
+    padding: 15px;
+}
+
+.portal button:hover {
+    background-color: rgb(52, 106, 139);
+    font-size: 18px;
+    border: none;
+    margin: 0 auto;
+    color: white;
     width: 100%;
     /* position: absolute; */
     /* left: 15%;
@@ -200,7 +214,7 @@ footer {
 }
 
 /*this is for the login*/
-input[type=text], input[type=password] {
+input[type=text],input[type=email], input[type=password] {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 8px;
@@ -210,7 +224,7 @@ input[type=text], input[type=password] {
     background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus,input[type=email]:focus, input[type=password]:focus {
     background-color: #ddd;
     outline: none;
 }
@@ -224,7 +238,7 @@ input[type=text]:focus, input[type=password]:focus {
     color: white;
     height: 50px;
     width: 150px;
-    margin: 0 auto;
+    margin: 3% auto;
     border: none;
 
 }
@@ -264,8 +278,13 @@ input[type=text]:focus, input[type=password]:focus {
 /*For event display page*/
 
 .events {
-    margin: 0 auto;
+    margin: 5% auto;
     width: 70%;
+    max-width: 800px;
+}
+
+.events p {
+    text-align: center;
 }
 
 #eventTitle {
