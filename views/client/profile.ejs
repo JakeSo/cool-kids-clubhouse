@@ -6,7 +6,7 @@
             <a id="eventLink" href="./<%= rsvp.event._id%>">
                 <div class="eventListing">
                     <h4><%= rsvp.event.title%></h4>
-                    <p><%= rsvp.event.location%> | <%= rsvp.event.date%></p>
+                    <p><%= rsvp.event.location%> | <%= rsvp.event.start%> to <%=rsvp.event.end%></p>
                 </div></a>
                 <br>
             <% }); %>

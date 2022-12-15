@@ -7,7 +7,7 @@
                 <a id="eventLink" href="./<%= event._id%>">
                 <div class="eventListing">
                     <h4><%= event.title%></h4>
-                    <p><%= event.location%> | <%= event.date%></p>
+                    <p><%= event.location%> | <%= event.start%> to <%=event.end%></p>
                 </div></a>
                 <br>
             <% }); %>

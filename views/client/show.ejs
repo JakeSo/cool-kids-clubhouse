@@ -5,7 +5,7 @@
         <h1 id="eventTitle"><%= event.title%></h1>
         <div class="eventDetail">
             <p><img src='/images/location-icon.png' height="15px" width="20px"><%= event.location%></p>
-            <p><img src='/images/clock-icon.png' height="20px" width="22px"><%= event.date %></p>
+            <p><img src='/images/clock-icon.png' height="20px" width="22px"><%= event.start %> to <%=event.end%></p>
         </div>
         <div class="eventDesc">
             <p><b>Event hosted by <%= event.host%></b></p>

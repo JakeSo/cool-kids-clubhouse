@@ -12,7 +12,7 @@
   <div class="row justify-content-center align-items-center">
     <div class="event-details">
         <h1><%=event.title%></h1>
-        <h5><%= event.location%> <br> <%= event.date%></h5>
+        <h5><%= event.location%> <br> <%= event.start%> to <%=event.end%></h5>
           <hr>
     </div>
         <form action="/client/<%= id%>/rsvp/" method="POST">

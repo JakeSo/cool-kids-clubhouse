@@ -120,21 +120,22 @@ exports.show = (req, res, next) => {
     // }
 };
 
-exports.edit = (req, res) => {
-    // let id = req.params.id;
+exports.edit = (req, res, next) => {
+    let id = req.params.id;
     // let user_id = req.session.user;
-    // Event.findById(id)
-    //     .then(event => {
-    //         res.render('./admin/edit', { event });
-    //     })
-    //     .catch(err => next(err));
-
-    Promise.all([adminUser.findById(user_id), Event.findById({ author: id })])
-        .then(results => {
-            const [user, event] = results;
-            res.render('./admin/edit', { user, event });
+    Event.findById(id)
+        .then(event => {
+            res.render('./admin/edit', { event });
         })
         .catch(err => next(err));
+    // let id = req.params.id;
+    // let user_id = req.session.user;
+    // Promise.all([adminUser.findById(user_id), Event.findById({ author: id })])
+    //     .then(results => {
+    //         const [user, event] = results;
+    //         res.render('./admin/edit', { user, event });
+    //     })
+    //     .catch(err => next(err));
 
     // let id = req.params.id;
     // let event = model.findById(id);
@@ -173,9 +174,8 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
     let id = req.params.id;
-
-    Event.findByIdAndDelete(id, { useFindAndModify: false })
-        .then(event => {
+    Promise.all([Event.findByIdAndDelete(id, { useFindAndModify: false }), Rsvp.deleteMany({connection: id})])
+        .then(results => {
             res.redirect('/admin/profile');
         })
         .catch(err => next(err));
