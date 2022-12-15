@@ -8,8 +8,8 @@ const eventSchema = new Schema ({
     host: {type: String, required: [true]},
     details: {type: String, required: [true, 'content is required'], minLength: [10, 'the content should have a least 10 characters']},
     location: {type: String, required: [true, 'location is required']},
-    date: {type: String, required: [true, 'date is required']}},
-    {timestamps: true}
+    start: {type: String, required: [true, 'Start_date is required']},
+    end: {type: String, required: [true, 'End_date is required']}},
 );
 
 //collection name is connections in the database

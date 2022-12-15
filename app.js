@@ -20,7 +20,7 @@ let host = 'localhost';
 app.set('view engine', 'ejs');
 
 //connect to database
-mongoose.connect("mongodb://localhost:27017/coolkidsclub",
+mongoose.connect("mongodb://127.0.0.1:27017/coolkidsclub",
     { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         //start app
@@ -36,7 +36,7 @@ app.use(
         secret: "ajfeirf90aeu9eroejfoeft",
         resave: false,
         saveUninitialized: false,
-        store: new MongoStore({ mongoUrl: "mongodb://localhost:27017/coolkidsclub" }),
+        store: new MongoStore({ mongoUrl: "mongodb://127.0.0.1:27017/coolkidsclub" }),
         cookie: { maxAge: 60 * 60 * 1000 }
     })
 );

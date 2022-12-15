@@ -10,8 +10,12 @@ exports.index = (req, res)=>{
 };
 
 //renders client calendar
-exports.calendar = (req, res) => {
-    res.render('./client/calendar');
+exports.calendar = (req, res, next) => {
+    model.find()
+        .then(events => {
+            res.render('./client/calendar', { events });
+        })
+        .catch(err => next(err));
 };
 
 //render rsvp page

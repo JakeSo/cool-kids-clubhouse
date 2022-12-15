@@ -74,6 +74,7 @@ exports.profile = (req, res, next) => {
     //res.render('./admin/home');
 };
 
+
 exports.new = (req, res) => {
     res.render('./admin/new');
 };
