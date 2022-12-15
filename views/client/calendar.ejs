@@ -1,20 +1,29 @@
 <%- include('../partials/header.ejs') %>
-<body onload="init();">
-    <main class="calendar-size">
-        <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
-            <div class="dhx_cal_navline">
-                <div class="dhx_cal_prev_button">&nbsp;</div>
-                <div class="dhx_cal_next_button">&nbsp;</div>
-                <div class="dhx_cal_today_button"></div>
-                <div class="dhx_cal_date"></div>
-                <div class="dhx_cal_tab" name="day_tab"></div>
-                <div class="dhx_cal_tab" name="week_tab"></div>
-                <div class="dhx_cal_tab" name="month_tab"></div>
-            </div>
-            <div class="dhx_cal_header">
-            </div>
-            <div class="dhx_cal_data">
-            </div>
-        </div>
-    </main>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.0.0/index.global.min.js'></script>
+<script>
+    function myFunc(){
+        var arrayContent= <%- JSON.stringify(events) %>;
+    console.log(JsonData)
+  }
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    initialDate: '2022-12-07',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    },
+    
+    events: <%- JSON.stringify(events) %>
+  });
+
+  calendar.render();
+});
+    </script>
+ <body>
+    <div id='calendar'></div>
+  </body>
 <%- include('../partials/footer.ejs') %>
