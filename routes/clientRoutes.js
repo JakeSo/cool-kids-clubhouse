@@ -11,7 +11,7 @@ const router = express.Router();
 router.get('/', isGuest, controller.index);
 
 //homepage page  /client/home
-router.get('/home', isLoggedIn, controller.home);
+router.get('/profile', isLoggedIn, controller.profile);
 
 router.get('/calendar', controller.calendar);
 

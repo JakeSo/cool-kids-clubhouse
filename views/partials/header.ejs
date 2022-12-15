@@ -46,28 +46,35 @@
 <body>
   <header>
     <div class="header">
-      <a class="logo" href="/">
-        <img src="/images/cool-kids-logo.png" alt="ckc-logo" class="ckc-logo" />
-      </a>
+      <%if(!user) {%>
+        <a class="logo" href="/">
+          <img src="/images/cool-kids-logo.png" alt="ckc-logo" class="ckc-logo" />
+        </a>
+        <%} else {%>
+          <a class="logo" href="/<%= user.status %>/profile">
+            <img src="/images/cool-kids-logo.png" alt="ckc-logo" class="ckc-logo" />
+          </a>
+          <%}%>
 
-      <h1 class="header-title">Cool Kids Clubhouse</h1>
-      <% if(user) { %>
-        <nav>
-          <ul>
-            <li class="dropdown"> Welcome, <a href="javascript:void(0)" aria-haspopup="true" class="dropbtn">
-                <%= user.firstName %>
-              </a>
-              <ul class="dropdown-content">
-                <li> <a href="/admin/profile">Profile</a></li>
-                <li> <a href="/client/calendar/">Calendar</a></li>
-                <li><a href="/logout">Log out</a></li>
-              </ul>
-            </li>
-            <li> |&nbsp;</li>
-            <li><a href="https://coolkidscampaign.org/">Cool Kids Home</a></li>
-          </ul>
-        </nav>
-        <%}%>
+
+            <h1 class="header-title">Cool Kids Clubhouse</h1>
+            <% if(user) { %>
+              <nav>
+                <ul>
+                  <li class="dropdown"><a href="javascript:void(0)" aria-haspopup="true" class="dropbtn">Welcome,
+                      <%=user.firstName %>
+                    </a>
+                    <ul class="dropdown-content">
+                      <li> <a href="/admin/profile">Profile</a></li>
+                      <li> <a href="/client/calendar/">Calendar</a></li>
+                      <li><a href="/logout">Log out</a></li>
+                    </ul>
+                  </li>
+                  <li> |&nbsp;</li>
+                  <li><a href="https://coolkidscampaign.org/">Cool Kids Home</a></li>
+                </ul>
+              </nav>
+              <%}%>
 
     </div>
   </header>

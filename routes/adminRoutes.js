@@ -38,5 +38,7 @@ router.put('/:id', validateId, isLoggedIn, isAuthor, validateEvent, validateResu
 //delete event at id        /admin/:id
 router.delete('/:id', validateId, isLoggedIn, isAuthor, controller.delete);
 
+// router.get('/calendar', controller.calendar);
+
 
 module.exports = router;

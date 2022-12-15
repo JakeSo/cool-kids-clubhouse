@@ -73,8 +73,13 @@ exports.profile = (req, res, next) => {
     //res.render('./admin/home');
 };
 
-exports.new = (req, res) => {
-    res.render('./admin/new');
+exports.new = (req, res, next) => {
+    let id = req.session.user;
+    adminUser.findById(id)
+        .then(user => {
+            res.render('./admin/new', { user });
+        })
+        .catch(err => next(err));
 };
 
 exports.create = (req, res) => {
@@ -96,10 +101,10 @@ exports.create = (req, res) => {
 
 exports.show = (req, res) => {
     let id = req.params.id;
-    Event.findById(id)
-        .then(event => {
-            console.log(event);
-            return res.render('./admin/show', { event });
+    Promise.all([adminUser.findById(id), Event.find({ author: id })])
+        .then(results => {
+            const [user, events] = results;
+            res.render('./admin/show', { user, events });
         })
         .catch(err => next(err));
 
@@ -114,9 +119,10 @@ exports.show = (req, res) => {
 
 exports.edit = (req, res) => {
     let id = req.params.id;
-    Event.findById(id)
-        .then(event => {
-            res.render('./admin/edit', { event });
+    Promise.all([adminUser.findById(id), Event.find({ author: id })])
+        .then(results => {
+            const [user, events] = results;
+            res.render('./admin/edit', { user, events });
         })
         .catch(err => next(err));
 
@@ -129,13 +135,14 @@ exports.edit = (req, res) => {
     // }
 };
 
-exports.update = (req, res) => {
+exports.update = (req, res, next) => {
     let event = req.body;
     let id = req.params.id;
 
-    Event.findByIdAndUpdate(id, event, { useFindAndModify: false, runValidators: true })
-        .then(event => {
-            res.redirect('/admin/' + id);
+    Promise.all([adminUser.findById(id), Event.findByIdAndUpdate(id, event, { useFindAndModify: false, runValidators: true })])
+        .then(results => {
+            const [user, events] = results;
+            res.redirect('/admin/' + id, { user, events });
         })
         .catch(err => {
             if (err.name === 'ValidationError') {
@@ -144,15 +151,6 @@ exports.update = (req, res) => {
             }
             next(err);
         });
-
-    // let event = req.body;
-    // let id = req.params.id;
-
-    // if (model.updateById(id, event)) {
-    //     res.redirect('/admin/home');
-    // } else {
-    //     res.status(404).send('Event with id ' + id + ' does not exist.')
-    // }
 };
 
 exports.delete = (req, res) => {
@@ -163,11 +161,14 @@ exports.delete = (req, res) => {
             res.redirect('/admin/profile');
         })
         .catch(err => next(err));
-
-    // let id = req.params.id;
-    // if (model.deleteById(id)) {
-    //     res.redirect('/admin/home');
-    // } else {
-    //     res.status(404).send('Event with id ' + id + ' does not exist.')
-    // }
 };
+
+// //renders client calendar
+// exports.calendar = (req, res, next) => {
+//     let id = req.session.user;
+//     adminUser.findById(id)
+//         .then(user => {
+//             res.render('./admin/calendar', {user});
+//         })
+//         .catch(err => next(err));
+// };

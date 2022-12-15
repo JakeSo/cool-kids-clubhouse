@@ -1,17 +1,23 @@
 //This is where the call back functions for the client side of the website will go
 const Client = require('../models/clientUser');
+const adminUser = require('../models/adminUser');
 const model = require('../models/event');
 const Rsvp = require('../models/rsvp');
 
 
 //renders client login page
-exports.index = (req, res)=>{
+exports.index = (req, res) => {
     res.render('./client/index');
 };
 
 //renders client calendar
-exports.calendar = (req, res) => {
-    res.render('./client/calendar');
+exports.calendar = (req, res, next) => {
+    let id = req.session.user;
+    adminUser.findById(id)
+        .then(user => {
+            res.render('./client/calendar', { user });
+        })
+        .catch(err => next(err));
 };
 
 //render rsvp page
@@ -24,36 +30,38 @@ exports.rsvp = (req, res, next) => {
             res.render('./client/rsvp', { event, client });
         })
         .catch(err => next(err)); */
-        let id = req.params.id;
-        model.findById(id)
-        .then(event=>{
+    let id = req.params.id;
+    model.findById(id)
+        .then(event => {
             res.render('./client/rsvp', { event, id });
         })
-        .catch(err=>next(err));
+        .catch(err => next(err));
 };
 
 //complete rsvp 
-exports.rsvpGo = (req, res, next)=>{
-    Rsvp.findOneAndUpdate({client: req.session.user, event: req.params.id}, {going: req.body.going, guests: req.body.guests}, {upsert: true})
-    .then(rsvp=>{
-        res.redirect('/client/home');
-        req.flash('success', 'RSVP successful');
-    })
-    .catch(err=>next(err));
+exports.rsvpGo = (req, res, next) => {
+    Rsvp.findOneAndUpdate({ client: req.session.user, event: req.params.id }, { going: req.body.going, guests: req.body.guests }, { upsert: true })
+        .then(rsvp => {
+            res.redirect('/client/home');
+            req.flash('success', 'RSVP successful');
+        })
+        .catch(err => next(err));
 };
 
 //displays entire list of events
-exports.home = (req, res)=>{
-    model.find()
-    .then(events=>{
-        res.render('./client/home', { events });
-    })
-    .catch(err=>next(err));
+exports.profile = (req, res) => {
+    let id = req.session.user;
+    Promise.all([Client.findById(id), model.find()])
+        .then(results => {
+            const [user, events] = results;
+            res.render('./client/profile', { user, events });
+        })
+        .catch(err => next(err));
 };
 
 //displays events for client
 //needs to be refactored
-exports.show = (req, res, next)=>{
+exports.show = (req, res, next) => {
     let id = req.params.id;
     model.findById(id)
         .then(event => {
@@ -61,22 +69,25 @@ exports.show = (req, res, next)=>{
             return res.render('./client/show', { event });
         })
         .catch(err => next(err));
-   /* let id = req.params.id;
-    let event = model.findById(id);
-    if(event){
-        res.render('./client/show', {event});
-    } else{
-        res.status(404).send('Event with id ' + id + ' does not exist.');
-    } */
+
+    // let user_id = req.session.user;
+    // let id = req.params.id;
+    // Promise.all([Client.findById(user_id), model.findById(id)])
+    //     .then(user, event => {
+    //         const user = user;
+    //         const event = event;
+    //         res.render('./client/show', { user, event });
+    //     })
+    //     .catch(err => next(err));
 };
 
 //renders client register page
-exports.register = (req, res)=>{
+exports.register = (req, res) => {
     res.render('./client/register');
 };
 
 //creates client account
-exports.signUp = (req, res, next)=>{
+exports.signUp = (req, res, next) => {
     let user = new Client(req.body);
     if (user.email) {
         user.email = user.email.toLowerCase();
@@ -119,7 +130,7 @@ exports.login = (req, res, next) => {
                         if (result) {
                             req.session.user = user._id;
                             req.flash('success', 'You have successfully logged in');
-                            res.redirect('/client/home');
+                            res.redirect('/client/profile');
                         } else {
                             req.flash('error', 'wrong password');
                             res.redirect('/client/');
