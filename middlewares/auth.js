@@ -1,4 +1,6 @@
 const Event = require('../models/event');
+const Client = require('../models/clientUser');
+const Admin = require('../models/adminUser');
 
 //check if user is a guest
 exports.isGuest = (req, res, next) => {
@@ -37,6 +39,36 @@ exports.isAuthor = (req, res, next) =>{
             let err = new Error('Cannot find a Event with id ' + req.params.id);
             err.status = 404;
             return next(err);
+        }
+    })
+    .catch(err=>next(err));
+};
+
+//checks if user is client
+exports.isClient = (req, res, next) =>{
+    let user = req.session.user;
+    Client.findById(user)
+    .then(user=>{
+        if(user){
+            return next();
+        } else{
+            req.flash('error', 'You are not a client user');
+        return res.redirect('back');
+        }
+    })
+    .catch(err=>next(err));
+};
+
+//checks if user is admin
+exports.isAdmin = (req, res, next) =>{
+    let user = req.session.user;
+    Admin.findById(user)
+    .then(user=>{
+        if(user){
+            return next();
+        } else{
+            req.flash('error', 'You are not an admin user');
+        return res.redirect('back');
         }
     })
     .catch(err=>next(err));
