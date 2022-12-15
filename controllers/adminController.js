@@ -106,16 +106,10 @@ exports.show = (req, res, next) => {
     let user_id = req.session.user;
     Promise.all([Event.findById(id), Rsvp.find({ event: id }).populate('client', 'firstName lastName'), adminUser.findById(user_id)])
         .then(results => {
-            const [event, rsvps, user] = results;
-            res.render('./admin/show', { event, rsvps, user });
+            const [event, rsvps, userA] = results;
+            res.render('./admin/show', { event, rsvps, userA });
         })
         .catch(err => next(err));
-
-    /*Event.findById(id)
-    .then(event => {
-        return res.render('./admin/show', { event });
-    })
-    .catch(err => next(err)); */
 
     // let id = req.params.id;
     // let event = model.findById(id);
