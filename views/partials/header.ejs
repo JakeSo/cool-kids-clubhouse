@@ -51,21 +51,24 @@
       </a>
 
       <h1 class="header-title">Cool Kids Clubhouse</h1>
-      <nav>
-        <ul>
+      <% if(user) { %>
+        <nav>
+          <ul>
+            <li class="dropdown"> Welcome, <a href="javascript:void(0)" aria-haspopup="true" class="dropbtn">
+                <%= user.firstName %>
+              </a>
+              <ul class="dropdown-content">
+                <li> <a href="/admin/profile">Profile</a></li>
+                <li> <a href="/client/calendar/">Calendar</a></li>
+                <li><a href="/logout">Log out</a></li>
+              </ul>
+            </li>
+            <li> |&nbsp;</li>
+            <li><a href="https://coolkidscampaign.org/">Cool Kids Home</a></li>
+          </ul>
+        </nav>
+        <%}%>
 
-          <li class="dropdown"> Welcome, <a href="javascript:void(0)" aria-haspopup="true" class="dropbtn">[User's
-              Name]</a>
-            <ul class="dropdown-content">
-              <li> <a href="/admin/profile">Profile</a></li>
-              <li> <a href="/client/calendar/">Calendar</a></li>
-              <li><a href="/logout">Log out</a></li>
-            </ul>
-          </li>
-          <li> |&nbsp;</li>
-          <li><a href="https://coolkidscampaign.org/">Cool Kids Home</a></li>
-        </ul>
-      </nav>
     </div>
   </header>
 
