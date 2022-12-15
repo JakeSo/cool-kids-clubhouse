@@ -1,3 +1,4 @@
+<!--the client login-->
 <%- include('../partials/header.ejs') %>
 <main class="client-login">
  <div class="content">
@@ -8,7 +9,7 @@
   <form id="client-login" name="client-login" action="/client/login" method="POST">
    <div class="div">
      <label for="email" class="label">Email:</label>
-     <input class="text" type="text" id="email" name="email" placeholder="Enter email"><br>
+     <input class="text" type="email" id="email" name="email" placeholder="Enter email"><br>
    </div>
    <div class="div">
    <label for="password" class="label">Password:</label>
@@ -16,7 +17,7 @@
    </div>
    <small>No account? <a href='/client/register'>Register here</a></small>
    <br>
-   <button type="submit" class='btn'>Login </button>
+   <button type="submit" class='btn'>Login</button>
   </form>
   
   

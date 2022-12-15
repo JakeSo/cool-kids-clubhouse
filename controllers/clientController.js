@@ -1,6 +1,7 @@
 //This is where the call back functions for the client side of the website will go
 const Client = require('../models/clientUser');
 const model = require('../models/event');
+const Rsvp = require('../models/rsvp');
 
 
 //renders client login page
@@ -17,14 +18,24 @@ exports.calendar = (req, res, next) => {
         .catch(err => next(err));
 };
 
-exports.rsvp = (req, res) => {
-    let id = req.params.id;
-    let event = model.findById(id);
-    if(event){
-        res.render('./client/rsvp', {event});
-    } else{
-        res.status(404).send('Event with id ' + id + ' does not exist.')
-    }
+//render rsvp page
+exports.rsvp = (req, res, next) => {
+        let id = req.params.id;
+        model.findById(id)
+        .then(event=>{
+            res.render('./client/rsvp', { event, id });
+        })
+        .catch(err=>next(err));
+};
+
+//complete rsvp 
+exports.rsvpGo = (req, res, next)=>{
+    Rsvp.findOneAndUpdate({client: req.session.user, event: req.params.id}, {going: req.body.going, guests: req.body.guests}, {upsert: true})
+    .then(rsvp=>{
+        res.redirect('/client/home');
+        req.flash('success', 'RSVP successful');
+    })
+    .catch(err=>next(err));
 };
 
 //displays entire list of events
@@ -38,14 +49,14 @@ exports.home = (req, res)=>{
 
 //displays events for client
 //needs to be refactored
-exports.show = (req, res)=>{
+exports.show = (req, res, next)=>{
     let id = req.params.id;
-    let event = model.findById(id);
-    if(event){
-        res.render('./client/show', {event});
-    } else{
-        res.status(404).send('Event with id ' + id + ' does not exist.');
-    }
+    model.findById(id)
+        .then(event => {
+            console.log(event);
+            return res.render('./client/show', { event });
+        })
+        .catch(err => next(err));
 };
 
 //renders client register page
@@ -54,7 +65,7 @@ exports.register = (req, res)=>{
 };
 
 //creates client account
-exports.signUp = (req, res, nexxt)=>{
+exports.signUp = (req, res, next)=>{
     let user = new Client(req.body);
     if (user.email) {
         user.email = user.email.toLowerCase();
@@ -106,4 +117,13 @@ exports.login = (req, res, next) => {
             }
         })
         .catch(err => next(err));
+};
+
+//renders client profile page
+exports.profile = (req, res, next)=>{
+    let id = req.session.user;
+    Rsvp.find({client: id}).populate('event', 'title date location')
+    .then(rsvps=>{
+        res.render('./client/profile', { rsvps });
+    })
 };

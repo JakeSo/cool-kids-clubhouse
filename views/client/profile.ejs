@@ -1,0 +1,18 @@
+<%- include('../partials/header.ejs') %>
+<main>
+    <%if(rsvps.length) { %>
+        <h2 id="eventHome">Events RSVPed</h2>
+        <%rsvps.forEach(rsvp=>{ %>
+            <a id="eventLink" href="./<%= rsvp.event._id%>">
+                <div class="eventListing">
+                    <h4><%= rsvp.event.title%></h4>
+                    <p><%= rsvp.event.location%> | <%= rsvp.event.date%></p>
+                </div></a>
+                <br>
+            <% }); %>
+        <% } else { %>
+            <h2 id="eventHome">No RSVPS. Try finding events to attend!</h2>
+        <% } %>
+</main>
+
+<%- include('../partials/footer.ejs') %>
