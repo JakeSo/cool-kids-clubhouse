@@ -10,6 +10,7 @@ const eventSchema = new Schema ({
     location: {type: String, required: [true, 'location is required']},
     start: {type: String, required: [true, 'Start_date is required']},
     end: {type: String, required: [true, 'End_date is required']}},
+    {timestamps: true}
 );
 
 //collection name is connections in the database
