@@ -16,14 +16,6 @@ exports.calendar = (req, res) => {
 
 //render rsvp page
 exports.rsvp = (req, res, next) => {
-    /*let id = req.params.id;
-    let user = req.session.user;
-    Promise.all(model.findById(id), Client.findById(user))
-        .then(results => {
-            const [event, client] = results;
-            res.render('./client/rsvp', { event, client });
-        })
-        .catch(err => next(err)); */
         let id = req.params.id;
         model.findById(id)
         .then(event=>{
@@ -61,13 +53,6 @@ exports.show = (req, res, next)=>{
             return res.render('./client/show', { event });
         })
         .catch(err => next(err));
-   /* let id = req.params.id;
-    let event = model.findById(id);
-    if(event){
-        res.render('./client/show', {event});
-    } else{
-        res.status(404).send('Event with id ' + id + ' does not exist.');
-    } */
 };
 
 //renders client register page
@@ -128,4 +113,13 @@ exports.login = (req, res, next) => {
             }
         })
         .catch(err => next(err));
+};
+
+//renders client profile page
+exports.profile = (req, res, next)=>{
+    let id = req.session.user;
+    Rsvp.find({client: id}).populate('event', 'title date location')
+    .then(rsvps=>{
+        res.render('./client/profile', { rsvps });
+    })
 };

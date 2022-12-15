@@ -11,15 +11,37 @@
             <p><b>Event hosted by <%= event.host%></b></p>
             <p><%= event.details%></p>
         </div>
-        
+        <% if(user == event.author._id){ %>
+        <% if(rsvps.length){ %>
+            <div>
+                <table>
+                    <tr>
+                        <td><b>User</b></td>
+                        <td><b>Status</b></td>
+                        <td><tr><b>Guests</b></tr></td>
+                    </tr>
+                    <% rsvps.forEach(rsvp=>{ %>
+                        <tr>
+                            <td><p><%=rsvp.client.firstName%> <%= rsvp.client.lastName%></p></td>
+                            <td><p><%=rsvp.going%></p></td>
+                            <td><p><%=rsvp.guests%></p></td>
+                        </tr>
+                    <% }); %>
+                </table>
+            </div>
+        <% } %>
+        <% } %>
         <br>
         
         <br><br>
         <% if(user == event.author._id){ %>
+            
+    <div>
         <form>
             <button id="eventUpdBtn" type = "submit" formmethod = "GET" formaction = "/admin/<%= event._id%>/edit">Update Event</button>
             <button id="eventDltBtn" type = "submit" formmethod = "POST" formaction = "/admin/<%= event._id%>?_method=DELETE">Delete Event</button>
         </form>
+    </div>
         <% } %>
     </div>
     

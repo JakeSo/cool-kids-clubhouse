@@ -1,6 +1,7 @@
 //This is where the call back functions for the admin side of the website will go
 const Event = require('../models/event');
 const adminUser = require('../models/adminUser');
+const Rsvp = require('../models/rsvp');
 
 exports.index = (req, res) => {
     res.render('./admin/index');
@@ -94,14 +95,21 @@ exports.create = (req, res) => {
         });
 };
 
-exports.show = (req, res) => {
+exports.show = (req, res, next) => {
     let id = req.params.id;
-    Event.findById(id)
-        .then(event => {
-            console.log(event);
-            return res.render('./admin/show', { event });
+    
+    Promise.all([Event.findById(id), Rsvp.find({event: id}).populate('client', 'firstName lastName')])
+        .then(results => {
+            const [event, rsvps] = results;
+            res.render('./admin/show', { event, rsvps });
         })
         .catch(err => next(err));
+
+        /*Event.findById(id)
+        .then(event => {
+            return res.render('./admin/show', { event });
+        })
+        .catch(err => next(err)); */
 
     // let id = req.params.id;
     // let event = model.findById(id);

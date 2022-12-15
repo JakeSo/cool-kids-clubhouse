@@ -13,6 +13,9 @@ router.get('/', isGuest, controller.index);
 //homepage page  /client/home
 router.get('/home', isLoggedIn, controller.home);
 
+//client profile page, /client/profile, displays RSVPed events
+router.get('/profile', isLoggedIn, controller.profile);
+
 router.get('/calendar', controller.calendar);
 
 //redirects to the register page
