@@ -15,7 +15,7 @@
         <h5><%= event.location%> <br> <%= event.date%></h5>
           <hr>
     </div>
-        <form action="/client/<%= id%>/rsvp/" action="POST">
+        <form action="/client/<%= id%>/rsvp/" method="POST">
             <div class="form-group">
               <!--<label for="name" class="form-label">Name:</label>
               <input class="form-control" type="name" name="name" placeholder="Enter your name:">

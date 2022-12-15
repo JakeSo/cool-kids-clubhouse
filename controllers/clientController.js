@@ -34,7 +34,7 @@ exports.rsvp = (req, res, next) => {
 
 //complete rsvp 
 exports.rsvpGo = (req, res, next)=>{
-    Rsvp.findOneAndUpdate({client: req.session.user, event: req.params.id}, {going: req.body, guests: req.body}, {upsert: true})
+    Rsvp.findOneAndUpdate({client: req.session.user, event: req.params.id}, {going: req.body.going, guests: req.body.guests}, {upsert: true})
     .then(rsvp=>{
         res.redirect('/client/home');
         req.flash('success', 'RSVP successful');

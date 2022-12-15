@@ -15,10 +15,12 @@
         <br>
         
         <br><br>
+        <% if(user == event.author._id){ %>
         <form>
             <button id="eventUpdBtn" type = "submit" formmethod = "GET" formaction = "/admin/<%= event._id%>/edit">Update Event</button>
             <button id="eventDltBtn" type = "submit" formmethod = "POST" formaction = "/admin/<%= event._id%>?_method=DELETE">Delete Event</button>
         </form>
+        <% } %>
     </div>
     
 </main>
