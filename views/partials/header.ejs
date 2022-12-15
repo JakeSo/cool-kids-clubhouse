@@ -7,14 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css" />
   <link rel="stylesheet" href="/css/style.css" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"></script>
-
   <style>
     html,
     body {
@@ -24,22 +21,6 @@
       /* overflow: hidden; */
     }
   </style>
-  <script>
-    function init() {
-      scheduler.config.xml_date = "%Y-%m-%d %H:%i";
-      scheduler.init("scheduler_here", new Date(2022, 10, 2), "month");
-      // enables the dynamic loading
-      scheduler.setLoadMode("day");
-
-      // load data from backend
-      scheduler.load("/data", "json");
-      // connect backend to scheduler
-      var dp = new dataProcessor("/data");
-      // set data exchange mode
-      dp.init(scheduler);
-      dp.setTransactionMode("POST", false);
-    }
-  </script>
 
   <title>Cool Kids Club</title>
   <link rel="icon" type="image/x-icon" href="/images/favicon.png" </head>
@@ -51,34 +32,34 @@
         <a class="logo" href="/">
           <img src="/images/cool-kids-logo.png" alt="ckc-logo" class="ckc-logo" />
         </a>
-        <%} else if(user.status == "admin") {%>
+        <%} else if(user.status=="admin" ) {%>
           <a class="logo" href="/admin/profile">
             <img src="/images/cool-kids-logo.png" alt="ckc-logo" class="ckc-logo" />
           </a>
-          <%} else if(user.status == "client") {%>
+          <%} else if(user.status=="client" ) {%>
             <a class="logo" href="/client/home">
               <img src="/images/cool-kids-logo.png" alt="ckc-logo" class="ckc-logo" />
             </a>
             <%}%>
 
-            <h1 class="header-title">Cool Kids Clubhouse</h1>
-            <% if(user) { %>
-              <nav>
-                <ul>
-                  <li class="dropdwn"> Welcome, <a href="javascript:void(0)" aria-haspopup="true" class="dropbtn">
-                      <%= user.firstName %>
-                    </a>
-                    <ul class="dropdwn-content">
-                      <li> <a href="/<%= user.status %>/profile">Profile</a></li>
-                      <li> <a href="/<%= user.status %>/calendar/">Calendar</a></li>
-                      <li><a href="/logout">Log out</a></li>
-                    </ul>
-                  </li>
-                  <li> |&nbsp;</li>
-                  <li><a href="https://coolkidscampaign.org/">Cool Kids Home</a></li>
-                </ul>
-              </nav>
-              <%}%>
+              <h1 class="header-title">Cool Kids Clubhouse</h1>
+              <% if(user) { %>
+                <nav>
+                  <ul>
+                    <li class="dropdwn"> Welcome, <a href="javascript:void(0)" aria-haspopup="true" class="dropbtn">
+                        <%= user.firstName %>
+                      </a>
+                      <ul class="dropdwn-content">
+                        <li> <a href="/admin/profile">Profile</a></li>
+                        <li> <a href="/admin/calendar/">Calendar</a></li>
+                        <li><a href="/logout">Log out</a></li>
+                      </ul>
+                    </li>
+                    <li> |&nbsp;</li>
+                    <li><a href="https://coolkidscampaign.org/">Cool Kids Home</a></li>
+                  </ul>
+                </nav>
+                <%}%>
 
     </div>
   </header>
